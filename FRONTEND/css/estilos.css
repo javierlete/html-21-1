@@ -1,16 +1,24 @@
+/* Variables de CSS */
 :root {
     --color-tinta: black;
     --color-fondo: white;
     --color-enlaces: #205e87;
+    --color-secundario: hsl(0, 0%, 75%);
+    --color-terciario: #f0f0f0;
 
     --margen-estandar: 1rem;
     --margen-pequeno: 0.5rem;
+
+    --grosor-linea: 2px;
 }
 
-/* * {
-    margin: 0;
-} */
+/* Reseteo */
+* {
+    /* margin: 0; */
+    box-sizing: border-box;
+}
 
+/* Etiquetas generales */
 body {
     margin: 0;
 
@@ -18,6 +26,36 @@ body {
 
     color: var(--color-tinta);
     background-color: var(--color-fondo);
+}
+
+p,
+pre,
+li,
+dt,
+dd {
+    line-height: calc(1rem + var(--margen-pequeno));
+}
+
+ul li {
+    list-style: circle;
+}
+
+li ol {
+    padding-left: 0;
+
+    & li {
+        list-style: lower-alpha;
+        list-style-position: inside;
+    }
+}
+
+dt {
+    font-weight: bold;
+}
+
+dd {
+    margin-left: 0;
+    margin-bottom: var(--margen-estandar);
 }
 
 a {
@@ -29,13 +67,110 @@ a:hover {
     text-decoration: underline;
 }
 
-figure, img, audio, video, iframe {
-    margin: 0;
-
+table {
+    border: var(--grosor-linea) solid black;
     width: 100%;
+
+    border-collapse: collapse;
+
+    & thead {
+        color: var(--color-fondo);
+        background-color: var(--color-tinta);
+    }
+
+    & tr:nth-of-type(even) {
+        background-color: var(--color-terciario);
+    }
+
+    & td,
+    & th {
+        border: 1px solid var(--color-secundario);
+
+        text-align: left;
+
+        padding: var(--margen-pequeno);
+    }
 }
 
-header {
+figure,
+img,
+audio,
+video,
+iframe,
+.aspecto {
+    margin: var(--margen-estandar) 0;
+
+    width: 100%;
+
+    border-radius: var(--margen-pequeno);
+}
+
+figure,
+audio,
+video,
+iframe {
+    border: var(--grosor-linea) solid var(--color-terciario);
+    box-shadow: var(--margen-pequeno) var(--margen-pequeno) var(--margen-pequeno) rgba(0, 0, 0, 0.185);
+}
+
+img {
+    margin-top: 0;
+    border-radius: var(--margen-pequeno) var(--margen-pequeno) 0 0;
+}
+
+figcaption {
+    margin: var(--margen-pequeno);
+    color: var(--color-secundario);
+
+    text-align: right;
+}
+
+audio {
+    border-radius: calc(var(--margen-estandar) * 2);
+}
+
+.aspecto {
+    position: relative;
+    width: 100%;
+    height: 0;
+}
+
+.aspecto iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.a16x9 {
+    padding-bottom: 56.25%;
+}
+
+.a1x1 {
+    padding-bottom: 100%;
+}
+
+.a4x3 {
+    padding-bottom: 75%;
+}
+
+fieldset,
+input,
+button,
+select,
+textarea {
+    border-radius: var(--margen-pequeno);
+    border: var(--grosor-linea) solid var(--color-secundario);
+    padding: var(--margen-pequeno);
+
+    width: 100%;
+    margin: var(--margen-pequeno) 0;
+}
+
+/* Estructura */
+header,
+footer {
     padding: var(--margen-estandar);
 
     color: var(--color-fondo);
@@ -47,15 +182,87 @@ header h1 {
     text-align: center;
 }
 
-body > nav {
+body>nav {
+    border-top: var(--grosor-linea) solid var(--color-fondo);
+    padding: var(--margen-pequeno) 0;
+
     text-align: center;
 
+    color: var(--color-fondo);
+    background-color: var(--color-tinta);
+
     & ul {
+        margin: 0;
+
         list-style: none;
         padding: 0;
     }
 
     & li {
         margin: var(--margen-pequeno) 0;
+
+        & a {
+            color: var(--color-fondo);
+
+            padding: var(--margen-pequeno);
+
+            width: 100%;
+
+            display: inline-block;
+
+            &:hover {
+                text-decoration: none;
+
+                color: var(--color-tinta);
+                background-color: var(--color-fondo);
+            }
+        }
+    }
+}
+
+main {
+    padding: var(--margen-estandar);
+}
+
+#html h2 {
+    text-align: center;
+
+    border-bottom: var(--grosor-linea) solid var(--color-tinta);
+
+    margin: var(--margen-estandar) calc(-1 * var(--margen-estandar));
+}
+
+#html h2,
+section h3 {
+    &::before {
+        content: '<';
+    }
+
+    &::after {
+        content: '>';
+    }
+}
+
+section h3 {
+    border-bottom: var(--grosor-linea) solid var(--color-tinta);
+
+    display: inline-block;
+}
+
+#tablas th:first-child {
+    text-align: right;
+}
+
+aside {
+    background-color: var(--color-terciario);
+    padding: var(--margen-estandar);
+
+    & ul {
+        margin: 0;
+        padding-left: 0;
+    }
+
+    & li {
+        list-style: none;
     }
 }
