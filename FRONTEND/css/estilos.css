@@ -14,9 +14,9 @@
 
     --margen-estandar: 1rem;
     --margen-pequeno: 0.5rem;
-    
+
     --sombra: var(--margen-pequeno) var(--margen-pequeno) var(--margen-pequeno) rgba(0, 0, 0, 0.185);
-    
+
     --grosor-linea: 2px;
 
     --tipo-letra-estandar: 'Work Sans', sans-serif;
@@ -31,7 +31,12 @@
 
 /* Etiquetas generales */
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: var(--tipo-letra-titulo);
 }
 
@@ -210,11 +215,12 @@ body>nav {
     & ul {
         margin: 0;
 
-        list-style: none;
         padding: 0;
     }
 
     & li {
+        list-style: none;
+
         margin: var(--margen-pequeno) 0;
 
         & a {
@@ -285,7 +291,7 @@ aside {
 
 #ir-arriba {
     position: fixed;
-    
+
     bottom: 3rem;
     right: 1.5rem;
 
@@ -307,7 +313,8 @@ aside {
     }
 }
 
-aside, footer {
+aside,
+footer {
     text-align: center;
 }
 
@@ -324,5 +331,66 @@ aside, footer {
     & a {
         color: var(--color-fondo);
         font-size: 1.5rem;
+    }
+}
+
+@media (min-width: 768px) {
+    body>nav {
+        position: sticky;
+        top: 0;
+        z-index: 1;
+
+
+        & ul {
+            display: flex;
+            justify-content: space-evenly;
+        }
+    }
+
+    #listas {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    section h3 {
+        width: 100%;
+        border-bottom: calc(var(--grosor-linea) / 2) solid var(--color-secundario);
+    }
+
+    #formularios {
+        display: flex;
+        flex-wrap: wrap;
+
+        & form:first-of-type, & form:nth-of-type(2) {
+            width: 50%;
+        }
+
+        & form:last-of-type {
+            display: flex;
+            width: 100%;
+
+            & fieldset {
+                width: 50%;
+            }
+        }
+    }
+
+    aside ul {
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    footer {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    p:has(#ir-arriba) {
+        display: none;
+    }
+
+    #redes-sociales li {
+        margin: var(--margen-pequeno);
     }
 }
