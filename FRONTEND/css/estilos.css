@@ -1,5 +1,8 @@
 /* Tipos de letra */
+/* Google */
 @import url(fonts.css);
+/* Fontawesome */
+@import url(all.min.css);
 
 /* Variables de CSS */
 :root {
@@ -283,8 +286,8 @@ aside {
 #ir-arriba {
     position: fixed;
     
-    bottom: 0;
-    right: 0;
+    bottom: 3rem;
+    right: 1.5rem;
 
     padding: var(--margen-pequeno);
     margin: var(--margen-estandar);
@@ -301,5 +304,25 @@ aside {
 
         color: var(--color-tinta);
         background-color: var(--color-secundario);
+    }
+}
+
+aside, footer {
+    text-align: center;
+}
+
+#redes-sociales {
+    display: flex;
+    justify-content: space-evenly;
+
+    padding-left: 0;
+
+    & li {
+        list-style: none;
+    }
+
+    & a {
+        color: var(--color-fondo);
+        font-size: 1.5rem;
     }
 }
