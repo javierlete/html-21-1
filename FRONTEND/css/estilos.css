@@ -1,3 +1,6 @@
+/* Tipos de letra */
+@import url('https://fonts.googleapis.com/css2?family=Cairo+Play:wght@700&family=Work+Sans&display=swap');
+
 /* Variables de CSS */
 :root {
     --color-tinta: black;
@@ -12,6 +15,9 @@
     --sombra: var(--margen-pequeno) var(--margen-pequeno) var(--margen-pequeno) rgba(0, 0, 0, 0.185);
     
     --grosor-linea: 2px;
+
+    --tipo-letra-estandar: 'Work Sans', sans-serif;
+    --tipo-letra-titulo: 'Cairo Play', sans-serif;
 }
 
 /* Reseteo */
@@ -21,10 +27,15 @@
 }
 
 /* Etiquetas generales */
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--tipo-letra-titulo);
+}
+
 body {
     margin: 0;
 
-    font-family: sans-serif;
+    font-family: var(--tipo-letra-estandar);
 
     color: var(--color-tinta);
     background-color: var(--color-fondo);
