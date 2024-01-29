@@ -23,6 +23,32 @@
     --tipo-letra-titulo: 'Cairo Play', sans-serif;
 }
 
+/* Zonas */
+
+#html h2 {
+    grid-area: titulo;
+}
+
+#parrafos {
+    grid-area: parrafos;
+}
+
+#listas {
+    grid-area: listas;
+}
+
+#tablas {
+    grid-area: tablas;
+}
+
+#multimedia {
+    grid-area: multimedia;
+}
+
+#formularios {
+    grid-area: formularios;
+}
+
 /* Reseteo */
 * {
     /* margin: 0; */
@@ -252,6 +278,7 @@ main {
     border-bottom: var(--grosor-linea) solid var(--color-tinta);
 
     margin: var(--margen-estandar) calc(-1 * var(--margen-estandar));
+    padding: 0 var(--margen-estandar);
 }
 
 #html h2,
@@ -392,5 +419,102 @@ footer {
 
     #redes-sociales li {
         margin: var(--margen-pequeno);
+    }
+}
+
+@media (min-width: 1024px) {
+    header h1, #html > h2 {
+        text-align: left;
+    }
+
+    body > nav ul {
+        justify-content: flex-start;
+    }
+
+    #parrafos {
+        display: flex;
+        flex-wrap: wrap;
+
+        & p, & pre {
+            /* width: calc(50% - var(--margen-pequeno) * 2); */
+            /* margin: var(--margen-pequeno); */
+
+            width: 50%;
+            padding: var(--margen-pequeno);
+        }
+    }
+
+    #html {
+        display: grid;
+        align-items: start;
+        gap: var(--margen-estandar);
+        grid-template-columns: 1fr 3fr;
+        grid-template-areas:
+            "titulo titulo"
+            "parrafos parrafos"
+            "listas tablas"
+            "multimedia multimedia"
+            "formularios formularios";
+        
+        & #listas {
+            flex-direction: column;
+        }
+    }
+
+    #multimedia {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--margen-estandar);
+
+        & h3, & audio {
+            order: -1;
+            grid-column-end: span 2;
+        }
+        
+        &>.aspecto {
+            margin-top: 0;
+        }
+
+        & video {
+            order: 0;
+        }
+
+        & figure {
+            order: 3;
+        }
+
+        & .a16x9 {
+            order: 2;
+        }
+        
+        & .a1x1 {
+            order: 1;
+            grid-row-end: span 2;
+        }
+        
+        & .a4x3 {
+            order: 4;
+        }
+    }
+}
+
+@media (min-width: 1440px) {
+    #html {
+        grid-template-columns: 2fr 1fr 1fr;
+        grid-template-areas:
+            "titulo titulo titulo"
+            "parrafos listas tablas"
+            "formularios multimedia multimedia";
+    }
+}
+
+@media (min-width: 2560px) {
+    #html {
+        grid-template-columns: 2fr 1fr 2fr;
+        grid-template-areas:
+            "titulo titulo titulo"
+            "parrafos listas formularios"
+            "tablas tablas formularios"
+            "multimedia multimedia multimedia";
     }
 }
