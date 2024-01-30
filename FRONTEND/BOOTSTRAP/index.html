@@ -65,16 +65,16 @@ public class HolaMundo {
                 </pre>
             </section>
 
-            <section id="listas">
+            <section class="row" id="listas">
                 <h3 class="border-bottom">Listas</h3>
 
-                <ul>
+                <ul style="list-style-position: inside;" class="col-sm">
                     <li>Elemento 1</li>
                     <li>Elemento 2</li>
                     <li>Elemento 3</li>
                 </ul>
 
-                <ol>
+                <ol style="list-style-position: inside;" class="col-sm">
                     <li>Elemento 1</li>
                     <li>Elemento 2
                         <ol>
@@ -86,7 +86,7 @@ public class HolaMundo {
                     <li>Elemento 3</li>
                 </ol>
 
-                <dl>
+                <dl style="list-style-position: inside;" class="col-sm">
                     <dt>HTML</dt>
                     <dd>Hyper Text Markup Language</dd>
 
@@ -204,28 +204,28 @@ public class HolaMundo {
                         <legend class="fw-bold border-bottom mb-4">Formulario de alta básico</legend>
 
                         <div class="row mb-3">
-                            <label class="col-sm-2 col-form-label" for="nombre">Nombre</label>
+                            <label class="col-sm-3 col-form-label" for="nombre">Nombre</label>
                             <div class="col-sm">
                                 <input class="form-control" type="text" id="nombre" name="nombre" placeholder="Tu nombre">
                             </div>
                         </div>
 
                         <div class="row mb-3">
-                            <label class="col-sm-2 col-form-label" for="apellidos">Apellidos</label>
+                            <label class="col-sm-3 col-form-label" for="apellidos">Apellidos</label>
                             <div class="col-sm">
                                 <input class="form-control" type="text" id="apellidos" name="apellidos" placeholder="Tus apellidos">
                             </div>
                         </div>
 
                         <div class="row mb-3">
-                            <label class="col-sm-2 col-form-label" for="email">Email</label>
+                            <label class="col-sm-3 col-form-label" for="email">Email</label>
                             <div class="col-sm">
                                 <input class="form-control" type="email" id="email" name="email" placeholder="Tu email">
                             </div>
                         </div>
 
                         <div class="row mb-3">
-                            <div class="offset-sm-2 col-sm">
+                            <div class="offset-sm-3 col-sm">
                                 <button class="btn btn-primary">Alta</button>
                             </div>
                         </div>
@@ -238,14 +238,14 @@ public class HolaMundo {
                         <legend class="fw-bold border-bottom mb-4">Formulario de búsqueda</legend>
 
                         <div class="row mb-3">
-                            <label class="col-sm-2 col-form-label" class="form-label" for="busqueda">Buscar</label>
+                            <label class="col-sm-3 col-form-label" class="form-label" for="busqueda">Buscar</label>
                             <div class="col-sm">
                                 <input class="form-control" type="search" id="busqueda" name="q">
                             </div>
                         </div>
 
                         <div class="row mb-3">
-                            <div class="offset-sm-2 col-sm">
+                            <div class="offset-sm-3 col-sm">
                                 <button class="btn btn-primary">Buscar</button>
                             </div>
                         </div>
@@ -258,77 +258,77 @@ public class HolaMundo {
                         <legend class="fw-bold border-bottom mb-4">Tipos de Datos en Formulario</legend>
 
                         <div class="row mb-3">
-                            <label class="col-sm-2 col-form-label" for="text">Texto</label>
+                            <label class="col-sm-3 col-form-label" for="text">Texto</label>
                             <div class="col-sm">
                                 <input class="form-control" type="text" id="text" name="text" placeholder="Introduce texto">
                             </div>
                         </div>
 
                         <div class="row mb-3">
-                            <label class="col-sm-2 col-form-label" for="number">Número</label>
+                            <label class="col-sm-3 col-form-label" for="number">Número</label>
                             <div class="col-sm">
                                 <input class="form-control" type="number" id="number" name="number" placeholder="Introduce número">
                             </div>
                         </div>
 
                         <div class="row mb-3">
-                            <label class="col-sm-2 col-form-label" for="date">Fecha</label>
+                            <label class="col-sm-3 col-form-label" for="date">Fecha</label>
                             <div class="col-sm">
                                 <input class="form-control" type="date" id="date" name="date">
                             </div>
                         </div>
 
                         <div class="row mb-3">
-                            <label class="col-sm-2 col-form-label" for="month">Mes</label>
+                            <label class="col-sm-3 col-form-label" for="month">Mes</label>
                             <div class="col-sm">
                                 <input class="form-control" type="month" id="month" name="month">
                             </div>
                         </div>
 
                         <div class="row mb-3">
-                            <label class="col-sm-2 col-form-label" for="password">Contraseña</label>
+                            <label class="col-sm-3 col-form-label" for="password">Contraseña</label>
                             <div class="col-sm">
                                 <input class="form-control" type="password" id="password" name="password" placeholder="Introduce contraseña">
                             </div>
                         </div>
 
                         <div class="row mb-3">
-                            <label class="col-sm-2 col-form-label" for="tel">Teléfono</label>
+                            <label class="col-sm-3 col-form-label" for="tel">Teléfono</label>
                             <div class="col-sm">
                                 <input class="form-control" type="tel" id="tel" name="tel" placeholder="Introduce teléfono">
                             </div>
                         </div>
 
                         <div class="row mb-3">
-                            <label class="col-sm-2 col-form-label" for="url">URL</label>
+                            <label class="col-sm-3 col-form-label" for="url">URL</label>
                             <div class="col-sm">
                                 <input class="form-control" type="url" id="url" name="url" placeholder="Introduce URL">
                             </div>
                         </div>
 
                         <div class="row mb-3">
-                            <label class="col-sm-2 col-form-label" for="search">Búsqueda</label>
+                            <label class="col-sm-3 col-form-label" for="search">Búsqueda</label>
                             <div class="col-sm">
                                 <input class="form-control" type="search" id="search" name="search" placeholder="Buscar">
                             </div>
                         </div>
 
                         <div class="row mb-3">
-                            <label class="col-sm-2 col-form-label" for="color">Color</label>
+                            <label class="col-sm-3 col-form-label" for="color">Color</label>
                             <div class="col-sm">
                                 <input class="form-control form-control-color" type="color" id="color" name="color">
                             </div>
                         </div>
 
                         <div class="row mb-3">
-                            <label class="col-sm-2 col-form-label" for="file">Archivo</label>
+                            <label class="col-sm-3 col-form-label" for="file">Archivo</label>
                             <div class="col-sm">
                                 <input class="form-control" type="file" id="file" name="file">
                             </div>
                         </div>
 
                         <div class="row mb-3">
-                            <div class="offset-sm-2 col-sm">
+                            <div class="offset-sm-3 col-sm">
                                 <button class="btn btn-primary" type="submit">Enviar</button>
                             </div>
                         </div>
@@ -338,14 +338,14 @@ public class HolaMundo {
                         <legend class="fw-bold border-bottom mb-4">Tipos más concretos</legend>
 
                         <div class="row mb-3">
-                            <label class="col-sm-2 col-form-label" for="range">Rango</label>
+                            <label class="col-sm-3 col-form-label" for="range">Rango</label>
                             <div class="col-sm">
                                 <input class="form-range" type="range" id="range" name="range">
                             </div>
                         </div>
 
                         <div class="row mb-3">
-                            <label class="col-sm-2 form-check-label" for="radio">Radio</label>
+                            <label class="col-sm-3 form-check-label" for="radio">Radio</label>
                             <div class="col-sm">
                                 <input class="form-check-input" type="radio" id="radio1" name="radio">
                                 <input class="form-check-input" type="radio" id="radio2" name="radio">
@@ -353,35 +353,35 @@ public class HolaMundo {
                         </div>
 
                         <div class="row mb-3">
-                            <label class="col-sm-2 form-check-label" for="checkbox">Checkbox</label>
+                            <label class="col-sm-3 form-check-label" for="checkbox">Checkbox</label>
                             <div class="col-sm">
                                 <input class="form-check-input" type="checkbox" id="checkbox" name="checkbox">
                             </div>
                         </div>
 
                         <div class="row mb-3">
-                            <label class="col-sm-2 col-form-label" for="datetime-local">Fecha y hora</label>
+                            <label class="col-sm-3 col-form-label" for="datetime-local">Fecha y hora</label>
                             <div class="col-sm">
                                 <input class="form-control" type="datetime-local" id="datetime-local" name="datetime-local">
                             </div>
                         </div>
 
                         <div class="row mb-3">
-                            <label class="col-sm-2 col-form-label" for="time">Hora</label>
+                            <label class="col-sm-3 col-form-label" for="time">Hora</label>
                             <div class="col-sm">
                                 <input class="form-control" type="time" id="time" name="time">
                             </div>
                         </div>
 
                         <div class="row mb-3">
-                            <label class="col-sm-2 col-form-label" for="week">Semana</label>
+                            <label class="col-sm-3 col-form-label" for="week">Semana</label>
                             <div class="col-sm">
                                 <input class="form-control" type="week" id="week" name="week">
                             </div>
                         </div>
 
                         <div class="row mb-3">
-                            <label class="col-sm-2 col-form-label" for="select">Seleccionar</label>
+                            <label class="col-sm-3 col-form-label" for="select">Seleccionar</label>
                             <div class="col-sm">
                                 <select class="form-select" id="select" name="select">
                                     <option value="1">Opción 1</option>
@@ -392,7 +392,7 @@ public class HolaMundo {
                         </div>
 
                         <div class="row mb-3">
-                            <label class="col-sm-2 col-form-label" for="list">Seleccionar</label>
+                            <label class="col-sm-3 col-form-label" for="list">Seleccionar</label>
                             <div class="col-sm">
                                 <select class="form-select" id="list" multiple name="list">
                                     <option value="1">Opción 1</option>
@@ -403,7 +403,7 @@ public class HolaMundo {
                         </div>
 
                         <div class="row mb-3">
-                            <label class="col-sm-2 col-form-label" for="textarea">Area de texto</label>
+                            <label class="col-sm-3 col-form-label" for="textarea">Area de texto</label>
                             <div class="col-sm">
                                 <textarea class="form-control" id="textarea" name="textarea"></textarea>
                             </div>
@@ -424,7 +424,7 @@ public class HolaMundo {
         </nav>
     </aside>
 
-    <footer class="text-bg-dark p-3 text-center">
+    <footer class="d-sm-flex justify-content-between text-bg-dark p-3 text-center">
         <p>&copy;2024 Javier Lete</p>
         <ul class="d-flex list-unstyled justify-content-center" id="redes-sociales">
             <li><a class="px-1 text-white" href="#"><i class="bi bi-facebook"></i></a></li>
@@ -434,7 +434,7 @@ public class HolaMundo {
             <li><a class="px-1 text-white" href="#"><i class="bi bi-instagram"></i></a></li>
             <li><a class="px-1 text-white" href="#"><i class="bi bi-vimeo"></i></a></li>
         </ul>
-        <p><a class="position-fixed bottom-0 end-0 text-white bg-dark text-decoration-none p-2 border rounded m-3 shadow" id="ir-arriba" href="#">Ir arriba</a></p>
+        <p class="d-sm-none"><a class="position-fixed bottom-0 end-0 text-white bg-dark text-decoration-none p-2 border rounded m-3 shadow" id="ir-arriba" href="#">Ir arriba</a></p>
     </footer>
 </body>
 
