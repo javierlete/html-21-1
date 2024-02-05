@@ -14,9 +14,25 @@
             <th>Id</th>
             <th>Nombre</th>
             <th>Precio</th>
+            <th>Opciones</th>
         </thead>
         <tbody></tbody>
+        <tfoot>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                <a href="javascript:formulario()">Añadir</a>
+            </td>
+        </tfoot>
     </table>
 
+    <form>
+        <input id="id" type="number" min="0" name="id" placeholder="id">
+        <input id="nombre" type="text" name="nombre" placeholder="nombre">
+        <input id="precio" type="number" step=".01" min="0" name="precio" placeholder="precio">
+        
+        <button>Guardar</button>
+    </form>
 </body>
 </html>
