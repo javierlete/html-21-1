@@ -105,6 +105,11 @@ function sentenciasDeControl() {
     const reducido = arr.reduce((anterior, actual) => +actual ? anterior + actual: anterior, 0);
 
     console.log(reducido);
+
+    let anterior = 0;
+    for(let actual of arr) {
+        anterior = +actual ? anterior + actual: anterior;
+    }
 }
 
 function funciones() {
