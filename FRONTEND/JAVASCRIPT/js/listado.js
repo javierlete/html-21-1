@@ -28,7 +28,7 @@ window.addEventListener('DOMContentLoaded', async function() {
         if(id.value) {
             producto.id = id.value;
             
-            const respuesta = fetch(URL + id.value, {
+            const respuesta = await fetch(URL + id.value, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
@@ -36,7 +36,7 @@ window.addEventListener('DOMContentLoaded', async function() {
                 body: JSON.stringify(producto)
             });
         } else {
-            const respuesta = fetch(URL, {
+            const respuesta = await fetch(URL, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -74,8 +74,8 @@ async function listado() {
             <td>${producto.nombre}</td>
             <td>${producto.precio}</td>
             <td>
-                <a href="javascript:formulario(${producto.id})">Editar</a>
-                <a href="javascript:borrar(${producto.id})">Borrar</a>
+                <a href="javascript:formulario('${producto.id}')">Editar</a>
+                <a href="javascript:borrar('${producto.id}')">Borrar</a>
             </td>
         `;
 
