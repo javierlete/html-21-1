@@ -1,19 +1,19 @@
 {
   "productos": [
     {
-      "id": "1",
+      "id": 1,
       "nombre": "Coca Cola",
       "precio": 20
     },
     {
       "nombre": "Fantaaaaaa",
       "precio": "20",
-      "id": "2"
+      "id": 2
     },
     {
-      "id": "eae5",
-      "nombre": "NUEVO",
-      "precio": "1234"
+      "nombre": "Prueba",
+      "precio": "1234",
+      "id": 3
     }
   ]
 }

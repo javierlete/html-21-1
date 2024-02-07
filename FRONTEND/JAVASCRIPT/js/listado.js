@@ -11,7 +11,7 @@ window.addEventListener('DOMContentLoaded', async function() {
     nombre = document.querySelector('#nombre');
     precio = document.querySelector('#precio');
 
-    form.style.display = 'none';
+    // form.style.display = 'none';
 
     tbody = document.querySelector('tbody');
 
@@ -19,6 +19,13 @@ window.addEventListener('DOMContentLoaded', async function() {
 
     form.addEventListener('submit', async function(evento) {
         evento.preventDefault();
+        evento.stopPropagation();
+        
+        form.classList.add('was-validated');
+        
+        if (!form.checkValidity()) {
+            return;
+        }
 
         const producto = {
             nombre: nombre.value,
@@ -74,8 +81,8 @@ async function listado() {
             <td>${producto.nombre}</td>
             <td>${producto.precio}</td>
             <td>
-                <a href="javascript:formulario('${producto.id}')">Editar</a>
-                <a href="javascript:borrar('${producto.id}')">Borrar</a>
+                <a class="btn btn-sm btn-primary" href="javascript:formulario('${producto.id}')">Editar</a>
+                <a class="btn btn-sm btn-danger" href="javascript:borrar('${producto.id}')">Borrar</a>
             </td>
         `;
 
