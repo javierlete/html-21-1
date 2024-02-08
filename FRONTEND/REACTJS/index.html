@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo de React</title>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <!-- Don't use this in production: -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <!-- <script defer src="js/index.js" type="text/babel"></script> -->
+</head>
+
+<body>
+    <div id="raiz"></div>
+
+    <script type="text/babel">
+        function Titulo({mensaje}) {
+            return <h1>{mensaje}</h1>;
+        }
+
+        function Titulos({mensaje, veces}) {
+            let titulo;
+
+            let total = [];
+
+            for(let i = 0; i < veces; i++) {
+                titulo = <Titulo key={i} mensaje={mensaje}></Titulo>;
+                total.push(titulo);
+            }
+
+            return total;
+        }
+
+        function App() {
+            return (
+                <>
+                    <h1>¡Hola mundo!</h1>
+                    <Titulo mensaje="¡Hola React!"></Titulo>
+
+                    <Titulos mensaje="Prueba" veces="5"></Titulos>
+                </>);
+        }
+
+        const contenedor = document.getElementById('raiz');
+
+        console.log('contenedor', contenedor);
+
+        const raiz = ReactDOM.createRoot(contenedor);
+        raiz.render(<App />);
+
+    </script>
+</body>
+
+</html>
