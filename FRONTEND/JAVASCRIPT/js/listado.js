@@ -2,16 +2,18 @@
 
 const URL = 'http://localhost:3000/productos/';
 
-let form, id, nombre, precio, tbody;
+let form, id, nombre, precio, tbody, menu;
 
 window.addEventListener('DOMContentLoaded', async function() {
+    menu = document.querySelector('body>nav');
+
     form = document.querySelector('form');
 
     id = document.querySelector('#id');
     nombre = document.querySelector('#nombre');
     precio = document.querySelector('#precio');
 
-    // form.style.display = 'none';
+    form.style.display = 'none';
 
     tbody = document.querySelector('tbody');
 
@@ -24,6 +26,7 @@ window.addEventListener('DOMContentLoaded', async function() {
         form.classList.add('was-validated');
         
         if (!form.checkValidity()) {
+            menu.insertAdjacentHTML('afterend', '<jl-alerta mensaje="Rellena todos los campos" tipo="danger"></jl-alerta>');
             return;
         }
 

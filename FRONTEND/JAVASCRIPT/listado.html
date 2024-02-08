@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Listado</title>
+    <title>Tienda</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -12,38 +12,92 @@
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
 
+    <script src="js/jquery-3.7.1.min.js"></script>
+
+    <script src="js/alerta.js"></script>
+    <script src="js/tarjeta.js"></script>
     <script src="js/label-input.js"></script>
     <script src="js/boton.js"></script>
     <script src="js/boton-formulario.js"></script>
     <script src="js/listado.js"></script>
+    <script src="js/principal.js"></script>
 </head>
 
 <body>
-    <table class="table table-hover table-striped table-bordered">
-        <thead class="table-dark">
-            <th>Id</th>
-            <th>Nombre</th>
-            <th>Precio</th>
-            <th>Opciones</th>
-        </thead>
-        <tbody></tbody>
-        <tfoot class="table-dark">
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>
-                <jl-boton sm="sm" href="javascript:formulario()">Añadir</jl-boton>
-            </td>
-        </tfoot>
-    </table>
+    <nav class="navbar navbar-expand-sm bg-body-tertiary navbar-dark" data-bs-theme="dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Tienda</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-sm-0">
+                    <li class="nav-item">
+                        <a class="nav-link" id="menu-principal" href="#">Principal</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav mb-2 mb-sm-0">
+                    <li class="nav-item">
+                        <a class="nav-link" id="menu-administracion" href="#">Administración</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-    <form class="container needs-validation" novalidate>
-        <jl-label-input ancho="2" i="id" tipo="text" solo-lectura="true">Id</jl-label-input>
-        <jl-label-input ancho="2" i="nombre" tipo="text" requerido="true" error="El nombre es obligatorio">Nombre</jl-label-input>
-        <jl-label-input ancho="2" i="precio" tipo="number" paso="0.01" minimo="0" requerido="true" error="El precio es obligatorio y más debe ser 0 o superior">Precio</jl-label-input>
-        
-        <jl-boton-formulario ancho="2">Guardar</jl-boton-formulario>
-    </form>
+
+    <main class="my-3">
+        <section id="principal">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 row-cols-xxl-6 g-4">
+                <div class="card" aria-hidden="true">
+                    <div class="card-body">
+                        <h5 class="card-title placeholder-glow">
+                            <span class="placeholder col-6"></span>
+                        </h5>
+                        <p class="card-text placeholder-glow">
+                            <span class="placeholder col-7"></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="admin">
+            <table class="table table-hover table-striped table-bordered">
+                <thead class="table-dark">
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Opciones</th>
+                </thead>
+                <tbody></tbody>
+                <tfoot class="table-dark">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <jl-boton sm="sm" href="javascript:formulario()">Añadir</jl-boton>
+                    </td>
+                </tfoot>
+            </table>
+
+            <form class="container needs-validation" novalidate>
+                <jl-label-input ancho="2" i="id" tipo="text" solo-lectura="true">Id</jl-label-input>
+                <jl-label-input ancho="2" i="nombre" tipo="text" requerido="true"
+                    error="El nombre es obligatorio">Nombre</jl-label-input>
+                <jl-label-input ancho="2" i="precio" tipo="number" paso="0.01" minimo="0" requerido="true"
+                    error="El precio es obligatorio y más debe ser 0 o superior">Precio</jl-label-input>
+
+                <jl-boton-formulario ancho="2">Guardar</jl-boton-formulario>
+            </form>
+        </section>
+    </main>
+
+    <footer class="p-3 text-bg-dark">
+        <p>&copy;2024 Javier Lete</p>
+    </footer>
 </body>
 
 </html>
