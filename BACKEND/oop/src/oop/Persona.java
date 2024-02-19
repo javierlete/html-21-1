@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 public class Persona {
+	private static final String NOMBRE_POR_DEFECTO = "Anónimo";
+	
 	// Variables de instancia
 	private Long id;
 	private String nombre;
@@ -40,7 +42,7 @@ public class Persona {
 	}
 	
 	public Persona() {
-		this(null, "Anónimo", null, null);
+		this(null, NOMBRE_POR_DEFECTO, null, null);
 	}
 
 	// Getters y setters
