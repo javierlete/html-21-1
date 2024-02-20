@@ -12,8 +12,17 @@ public class EspacioPrueba {
 		e.getPersonas().add(new Persona("Javier"));
 		e.getPersonas().add(new Persona("Pepe"));
 		e.getPersonas().add(new Persona("Juan"));
-		e.getPersonas().add(new Empleado("Javier", "Lete", LocalDate.of(2000, 2, 3), new BigDecimal("23456.78")));
+		e.getPersonas().add(new EmpleadoIndefinido(1L, "Pepe", "Pérez", LocalDate.of(2000, 1, 2), new BigDecimal("12345.67"), 12));
+		e.getPersonas().add(new EmpleadoPorHoras(2L, "Javier", "Lete", LocalDate.of(2000, 1, 2), new BigDecimal("12.67"), 60));
 		
 		System.out.println(e);
+		
+		for(Persona p: e.getPersonas()) {
+			System.out.println(p);
+			
+			if(p instanceof Empleado empleado) {
+				System.out.println(empleado.getSueldoMensual());
+			}
+		}
 	}
 }

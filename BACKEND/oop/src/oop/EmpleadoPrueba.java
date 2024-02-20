@@ -5,11 +5,11 @@ import java.time.LocalDate;
 
 public class EmpleadoPrueba {
 	public static void main(String[] args) {
-		Empleado e = new Empleado("Pepe", "Pérez", LocalDate.of(2000, 1, 2), new BigDecimal("12345.67"));
+		Empleado e = new EmpleadoIndefinido(1L, "Pepe", "Pérez", LocalDate.of(2000, 1, 2), new BigDecimal("12345.67"), 12);
 
 		System.out.println(e);
 
-		Empleado e2 = new Empleado(e);
+		Empleado e2 = new EmpleadoPorHoras(2L, "Javier", "Lete", LocalDate.of(2000, 1, 2), new BigDecimal("12.67"), 60);
 
 		System.out.println(e2);
 
@@ -24,7 +24,7 @@ public class EmpleadoPrueba {
 		if (p instanceof Empleado e3) {
 			//Empleado e3 = (Empleado) p;
 
-			System.out.println(e.getSueldo());
+			System.out.println(e.getSueldoMensual());
 		} else {
 			System.out.println("NO ES UN EMPLEADO");
 		}
@@ -35,7 +35,7 @@ public class EmpleadoPrueba {
 		if (p2 instanceof Empleado) {
 			Empleado e4 = (Empleado) p2;
 
-			System.out.println(e4.getSueldo());
+			System.out.println(e4.getSueldoMensual());
 		} else {
 			System.out.println("NO ES UN EMPLEADO");
 		}
