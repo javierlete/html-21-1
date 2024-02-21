@@ -12,28 +12,43 @@ public class FicherosTexto {
 
 	private static final boolean AGREGAR_AL_FINAL = true;
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) {
 		File carpeta = new File("ficheros");
 		carpeta.mkdir();
 		
 		File ficheroTexto = new File(carpeta, "fichero.txt");
 		
-		FileWriter fw = new FileWriter(ficheroTexto, AGREGAR_AL_FINAL);
-		PrintWriter pw = new PrintWriter(fw, true);
+		FileWriter fw = null;
+		PrintWriter pw = null;
 		
-		pw.printf("%s: ejecución del programa\n", LocalDateTime.now());
-		
-		pw.close();
-		fw.close();
-		
-		FileReader fr = new FileReader(ficheroTexto);
-		Scanner sc = new Scanner(fr);
-		
-		while(sc.hasNext()) {
-			System.out.println(sc.nextLine());
+		try {
+			fw = new FileWriter(ficheroTexto, AGREGAR_AL_FINAL);
+			pw = new PrintWriter(fw, true);
+			
+			pw.printf("%s: ejecución del programa\n", LocalDateTime.now());
+		} catch (IOException e) {
+			System.out.println("No se ha podido escribir en el fichero");
+		} finally {
+			if(pw != null) {
+				pw.close();
+			}
+			
+			if(fw != null) {
+				try {
+					fw.close();
+				} catch (IOException e) {
+					System.out.println("Ha fallado el cierre de fichero");
+				}
+			}
 		}
 		
-		sc.close();
-		fr.close();
+		try (FileReader fr = new FileReader(ficheroTexto);
+				Scanner sc = new Scanner(fr)) {
+			while(sc.hasNext()) {
+				System.out.println(sc.nextLine());
+			}
+		} catch (IOException e) {
+			System.out.println("Ha habido un error al leer el fichero");
+		}
 	}
 }
