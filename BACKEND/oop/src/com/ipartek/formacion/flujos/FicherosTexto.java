@@ -1,4 +1,4 @@
-package com.ipartek.formacion.ficheros;
+package com.ipartek.formacion.flujos;
 
 import java.io.File;
 import java.io.FileReader;
