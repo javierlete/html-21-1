@@ -10,6 +10,7 @@ public class ExcepcionesPrueba {
 			
 			arr[2] = 5;
 			
+			@SuppressWarnings("unused")
 			String s = null;
 
 			// System.out.println(s.toUpperCase());
