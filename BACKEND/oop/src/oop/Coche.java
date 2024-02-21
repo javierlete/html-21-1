@@ -1,9 +1,12 @@
 package oop;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
-public class Coche {
+public class Coche implements Serializable {
+	private static final long serialVersionUID = 1L;
+	
 	private Long id;
 	private String marca;
 	private String modelo;
