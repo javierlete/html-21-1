@@ -1,24 +1,44 @@
 package com.ipartek.formacion.guasa;
 
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+import javax.swing.JFrame;
+import javax.swing.JTextArea;
+
 public class Servidor {
 
 	public static void main(String[] args) {
-		System.out.println("Arranque del servidor GUASA");
+		JFrame frame = new JFrame("Servidor GUASA");
 		
-		try (ServerSocket ss = new ServerSocket(1234)) {
+		frame.setBounds(0, 0, 500, 500);
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+		frame.addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosed(WindowEvent e) {
+				System.exit(0);
+			}
+		});
+		
+		JTextArea textArea = new JTextArea();
+		frame.add(textArea);
+		
+		frame.setVisible(true);
+		
+		try (ServerSocket serverSocket = new ServerSocket(1234)) {
 			ConexionUsuario conexion;
 
-			Socket s;
+			Socket socket;
 			Thread hilo;
 
 			do {
-				s = ss.accept();
+				socket = serverSocket.accept();
 
-				conexion = new ConexionUsuario(s);
+				conexion = new ConexionUsuario(socket, textArea);
 
 				hilo = new Thread(conexion);
 

@@ -6,14 +6,18 @@ import java.net.Socket;
 import java.time.LocalTime;
 import java.util.Scanner;
 
+import javax.swing.JTextArea;
+
 public class ConexionUsuario implements Runnable {
 	private static final boolean AUTO_FLUSH = true;
 	
 	private Socket socket;
 	private boolean cerrar;
+	private JTextArea textArea;
 	
-	public ConexionUsuario(Socket socket) {
+	public ConexionUsuario(Socket socket, JTextArea textArea) {
 		this.socket = socket;
+		this.textArea = textArea;
 	}
 
 	public boolean isCerrar() {
@@ -44,19 +48,19 @@ public class ConexionUsuario implements Runnable {
 					salir = true;
 					break;
 				default:
-					System.out.printf("%s (%s): %s\n", LocalTime.now(), nombre, texto);
+					textArea.append(String.format("%s (%s): %s\n", LocalTime.now(), nombre, texto));
 				}
 			} while (!salir);
 
 			pw.close();
 			sc.close();
 		} catch (IOException e) {
-			System.out.println("Error de conexión");
+			textArea.append("Error de conexión");
 		} finally {
 			try {
 				socket.close();
 			} catch (IOException e) {
-				System.out.println("Error de cierre de socket");
+				textArea.append("Error de cierre de socket");
 			}
 		}
 	}
