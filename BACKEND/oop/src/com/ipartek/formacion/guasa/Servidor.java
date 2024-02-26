@@ -1,7 +1,5 @@
 package com.ipartek.formacion.guasa;
 
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -15,14 +13,14 @@ public class Servidor {
 		JFrame frame = new JFrame("Servidor GUASA");
 		
 		frame.setBounds(0, 0, 500, 500);
-		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //.DISPOSE_ON_CLOSE);
 
-		frame.addWindowListener(new WindowAdapter() {
-			@Override
-			public void windowClosed(WindowEvent e) {
-				System.exit(0);
-			}
-		});
+//		frame.addWindowListener(new WindowAdapter() {
+//			@Override
+//			public void windowClosed(WindowEvent e) {
+//				System.exit(0);
+//			}
+//		});
 		
 		JTextArea textArea = new JTextArea();
 		frame.add(textArea);

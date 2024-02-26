@@ -1,6 +1,5 @@
 package com.ipartek.formacion.guasa;
 
-import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.time.LocalTime;
@@ -30,12 +29,16 @@ public class ConexionUsuario implements Runnable {
 
 	@Override
 	public void run() {
+		String nombre = null;
+		
 		try (PrintWriter pw = new PrintWriter(socket.getOutputStream(), AUTO_FLUSH);
 				Scanner sc = new Scanner(socket.getInputStream())) {
 			pw.println("Bienvenido a GUASA. Dime tu nombre.");
 
-			String nombre = sc.nextLine();
+			nombre = sc.nextLine();
 
+			mensaje(nombre, "SE HA CONECTADO");
+			
 			boolean salir = false;
 
 			do {
@@ -48,21 +51,26 @@ public class ConexionUsuario implements Runnable {
 					salir = true;
 					break;
 				default:
-					textArea.append(String.format("%s (%s): %s\n", LocalTime.now(), nombre, texto));
+					mensaje(nombre, texto);
 				}
 			} while (!salir);
 
 			pw.close();
 			sc.close();
-		} catch (IOException e) {
-			textArea.append("Error de conexión");
+		} catch (Exception e) {
+			nombre = nombre != null ? nombre : "DESCONOCIDO";
+			mensaje(nombre, "SE HA DESCONECTADO");
 		} finally {
 			try {
 				socket.close();
-			} catch (IOException e) {
+			} catch (Exception e) {
 				textArea.append("Error de cierre de socket");
 			}
 		}
+	}
+
+	private void mensaje(String nombre, String texto) {
+		textArea.append(String.format("%s (%s): %s\n", LocalTime.now(), nombre, texto));
 	}
 
 }

@@ -1,22 +1,31 @@
 package com.ipartek.formacion.guasa;
 
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.PrintWriter;
+import java.net.Socket;
+import java.util.Scanner;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 public class Cliente {
 
+	private static final boolean AUTO_FLUSH = true;
 	private JFrame frame;
 	private JTextField tfNombre;
 	private JTextField tfMensaje;
 
+	private Socket socket;
+	private PrintWriter pw;
+	private Scanner sc;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -62,7 +71,7 @@ public class Cliente {
 		frame.getContentPane().add(lblNombre);
 		
 		tfNombre = new JTextField();
-		tfNombre.setBounds(73, 27, 192, 19);
+		tfNombre.setBounds(73, 27, 268, 19);
 		frame.getContentPane().add(tfNombre);
 		tfNombre.setColumns(10);
 		
@@ -75,21 +84,31 @@ public class Cliente {
 		frame.getContentPane().add(tfMensaje);
 		tfMensaje.setColumns(10);
 		
-		JButton btnNombre = new JButton("Cambiar nombre");
-		btnNombre.addActionListener(new ActionListener() {
+		JButton btnConectar = new JButton("Conectar");
+		btnConectar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("Cambiar nombre");
-				System.out.println(tfNombre.getText());
+				try {
+					socket = new Socket("localhost", 1234);
+					
+					pw = new PrintWriter(socket.getOutputStream(), AUTO_FLUSH);
+					sc = new Scanner(socket.getInputStream());
+					
+					sc.nextLine();
+					
+					pw.println(tfNombre.getText());
+				} catch (Exception e1) {
+					JOptionPane.showMessageDialog(frame, "Ha habido un error en el cliente");
+					e1.printStackTrace();
+				}
 			}
 		});
-		btnNombre.setBounds(275, 26, 161, 21);
-		frame.getContentPane().add(btnNombre);
+		btnConectar.setBounds(351, 26, 85, 21);
+		frame.getContentPane().add(btnConectar);
 		
 		JButton btnEnviar = new JButton("Enviar");
 		btnEnviar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("Enviar");
-				System.out.println(tfMensaje.getText());
+				pw.println(tfMensaje.getText());
 			}
 		});
 		btnEnviar.setBounds(351, 52, 85, 21);
