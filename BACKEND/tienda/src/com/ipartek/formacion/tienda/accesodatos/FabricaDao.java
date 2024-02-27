@@ -19,7 +19,7 @@ public class FabricaDao {
 				daoProducto = DaoProductoTreeMap.getInstancia();
 				break;
 			case "fichero":
-				// daoProducto = DaoProductoFichero.getInstancia();
+				daoProducto = new DaoProductoFichero("tienda.dat");
 				break;
 			default:
 				throw new AccesoDatosException("No se reconoce el tipo " + tipo);
