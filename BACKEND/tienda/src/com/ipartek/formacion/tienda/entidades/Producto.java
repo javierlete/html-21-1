@@ -18,6 +18,9 @@ public class Producto {
 		this.fechaCaducidad = fechaCaducidad;
 	}
 
+	public Producto() {
+	}
+
 	public Long getId() {
 		return id;
 	}
