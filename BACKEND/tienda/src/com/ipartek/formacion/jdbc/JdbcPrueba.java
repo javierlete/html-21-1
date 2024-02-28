@@ -95,5 +95,7 @@ public class JdbcPrueba {
 		pst.close();
 		
 		System.out.println(numeroRegistrosModificados);
+		
+		con.close();
 	}
 }
