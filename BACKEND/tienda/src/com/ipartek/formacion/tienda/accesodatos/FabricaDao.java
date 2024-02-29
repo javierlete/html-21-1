@@ -21,6 +21,9 @@ public class FabricaDao {
 			case "fichero":
 				daoProducto = new DaoProductoFichero("tienda.dat");
 				break;
+			case "sqlite":
+				daoProducto = new DaoProductoSqlite("tienda.db");
+				break;
 			default:
 				throw new AccesoDatosException("No se reconoce el tipo " + tipo);
 			}
