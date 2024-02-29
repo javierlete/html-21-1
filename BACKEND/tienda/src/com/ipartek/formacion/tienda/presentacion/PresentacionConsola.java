@@ -22,6 +22,8 @@ public class PresentacionConsola {
 	private static final int INSERTAR = 3;
 	private static final int MODIFICAR = 4;
 	private static final int BORRAR = 5;
+	private static final int BUSCAR_NOMBRE = 6;
+	
 
 	private static final DaoProducto DAO = new FabricaDao().getDaoProducto();
 	
@@ -45,6 +47,8 @@ public class PresentacionConsola {
 		pl("3. INSERTAR");
 		pl("4. MODIFICAR");
 		pl("5. BORRAR");
+		pl();
+		pl("6. BUSCAR POR NOMBRE");
 		pl();
 		pl("0. SALIR");
 		pl();
@@ -72,6 +76,9 @@ public class PresentacionConsola {
 			break;
 		case BORRAR:
 			borrar();
+			break;
+		case BUSCAR_NOMBRE:
+			buscarNombre();
 			break;
 		case SALIR:
 			pl("Gracias por usar esta aplicación");
@@ -143,6 +150,16 @@ public class PresentacionConsola {
 		long id = leerLong("Dime el id a borrar");
 		
 		DAO.borrar(id);
+	}
+
+	private static void buscarNombre() {
+		pl("*BUSCAR POR NOMBRE*");
+		
+		String nombre = leerString("Dime el nombre a buscar");
+		
+		for(Producto p: DAO.buscarPorNombre(nombre)) {
+			mostrarLinea(p);
+		}
 	}
 
 	public static void mainPrueba(String[] args) {
