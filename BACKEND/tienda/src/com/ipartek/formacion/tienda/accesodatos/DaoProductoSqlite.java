@@ -46,7 +46,7 @@ public class DaoProductoSqlite implements DaoProducto {
 			Producto producto;
 			
 			while(rs.next()) {
-				producto = new Producto(rs.getLong("id"), rs.getString("nombre"), rs.getBigDecimal("precio"), LocalDate.parse(rs.getString("fecha_caducidad")));
+				producto = filaAProducto(rs);
 				
 				productos.add(producto);
 			}
@@ -67,7 +67,7 @@ public class DaoProductoSqlite implements DaoProducto {
 			ResultSet rs = pst.executeQuery();
 
 			if(rs.next()) {
-				return new Producto(rs.getLong("id"), rs.getString("nombre"), rs.getBigDecimal("precio"), LocalDate.parse(rs.getString("fecha_caducidad")));
+				return filaAProducto(rs);
 			} else {
 				return null;
 			}
@@ -138,7 +138,7 @@ public class DaoProductoSqlite implements DaoProducto {
 			Producto producto;
 			
 			while(rs.next()) {
-				producto = new Producto(rs.getLong("id"), rs.getString("nombre"), rs.getBigDecimal("precio"), LocalDate.parse(rs.getString("fecha_caducidad")));
+				producto = filaAProducto(rs);
 				
 				productos.add(producto);
 			}
@@ -147,6 +147,14 @@ public class DaoProductoSqlite implements DaoProducto {
 		} catch (Exception e) {
 			throw new AccesoDatosException("No han podido obtener los productos con nombre " + nombre, e);
 		}
+	}
+	
+	private Producto filaAProducto(ResultSet rs) throws SQLException {
+		String textoFecha = rs.getString("fecha_caducidad");
+		LocalDate fechaCaducidad = textoFecha == null ? null : LocalDate.parse(textoFecha);
+		
+		return new Producto(rs.getLong("id"), rs.getString("nombre"), rs.getBigDecimal("precio"),
+				fechaCaducidad);
 	}
 
 }
