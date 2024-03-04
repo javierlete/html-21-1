@@ -25,6 +25,14 @@ public class DaoProductoSqlite implements DaoProducto {
 
 	private String fichero;
 
+	static {
+		try {
+			Class.forName("org.sqlite.JDBC");
+		} catch (ClassNotFoundException e) {
+			throw new AccesoDatosException("No se ha podido encontrar el driver de MySQL", e);
+		}
+	}
+	
 	public DaoProductoSqlite(String fichero) {
 		this.fichero = fichero;
 	}

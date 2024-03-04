@@ -25,6 +25,14 @@ public class DaoProductoMySql implements DaoProducto {
 	private final String usuario;
 	private final String password;
 
+	static {
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			throw new AccesoDatosException("No se ha podido encontrar el driver de MySQL", e);
+		}
+	}
+	
 	public DaoProductoMySql(String baseDeDatos, String usuario, String password) {
 		this.baseDeDatos = baseDeDatos;
 		this.usuario = usuario;
