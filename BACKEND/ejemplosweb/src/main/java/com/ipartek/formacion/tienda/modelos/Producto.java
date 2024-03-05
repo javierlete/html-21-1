@@ -1,4 +1,4 @@
-package com.ipartek.formacion.tienda.entidades;
+package com.ipartek.formacion.tienda.modelos;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
