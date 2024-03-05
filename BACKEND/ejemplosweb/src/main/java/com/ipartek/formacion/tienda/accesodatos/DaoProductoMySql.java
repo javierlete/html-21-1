@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-import com.ipartek.formacion.tienda.entidades.Producto;
+import com.ipartek.formacion.tienda.modelos.Producto;
 
 public class DaoProductoMySql implements DaoProducto {
 	private static final String URL = "jdbc:mysql://";
@@ -87,9 +87,7 @@ public class DaoProductoMySql implements DaoProducto {
 	@Override
 	public Producto insertar(Producto producto) {
 		try (Connection con = obtenerConexion(); PreparedStatement pst = con.prepareStatement(SQL_INSERT);) {
-			pst.setString(1, producto.getNombre());
-			pst.setBigDecimal(2, producto.getPrecio());
-			pst.setString(3, producto.getFechaCaducidad().toString());
+			productoAFila(producto, pst);
 
 			pst.executeUpdate();
 
@@ -99,12 +97,19 @@ public class DaoProductoMySql implements DaoProducto {
 		}
 	}
 
+	private void productoAFila(Producto producto, PreparedStatement pst) throws SQLException {
+		pst.setString(1, producto.getNombre());
+		pst.setBigDecimal(2, producto.getPrecio());
+		
+		LocalDate fecha = producto.getFechaCaducidad();
+		
+		pst.setString(3, fecha == null ? null : fecha.toString());
+	}
+
 	@Override
 	public Producto modificar(Producto producto) {
 		try (Connection con = obtenerConexion(); PreparedStatement pst = con.prepareStatement(SQL_UPDATE);) {
-			pst.setString(1, producto.getNombre());
-			pst.setBigDecimal(2, producto.getPrecio());
-			pst.setString(3, producto.getFechaCaducidad().toString());
+			productoAFila(producto, pst);
 
 			pst.setLong(4, producto.getId());
 
