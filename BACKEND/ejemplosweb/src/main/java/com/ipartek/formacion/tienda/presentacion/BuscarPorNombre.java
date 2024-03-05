@@ -5,7 +5,7 @@ import java.io.PrintWriter;
 
 import com.ipartek.formacion.tienda.accesodatos.DaoProducto;
 import com.ipartek.formacion.tienda.accesodatos.FabricaDao;
-import com.ipartek.formacion.tienda.entidades.Producto;
+import com.ipartek.formacion.tienda.modelos.Producto;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
