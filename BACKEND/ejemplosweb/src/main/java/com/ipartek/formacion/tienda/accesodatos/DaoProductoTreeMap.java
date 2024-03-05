@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.TreeMap;
 
-import com.ipartek.formacion.tienda.entidades.Producto;
+import com.ipartek.formacion.tienda.modelos.Producto;
 
 public class DaoProductoTreeMap implements DaoProducto {
 

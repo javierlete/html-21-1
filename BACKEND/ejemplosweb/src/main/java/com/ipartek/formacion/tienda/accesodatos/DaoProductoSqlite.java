@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-import com.ipartek.formacion.tienda.entidades.Producto;
+import com.ipartek.formacion.tienda.modelos.Producto;
 
 public class DaoProductoSqlite implements DaoProducto {
 	private static final String URL = "jdbc:sqlite:";

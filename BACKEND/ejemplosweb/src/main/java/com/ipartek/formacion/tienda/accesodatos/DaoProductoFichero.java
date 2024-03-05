@@ -8,7 +8,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.TreeMap;
 
-import com.ipartek.formacion.tienda.entidades.Producto;
+import com.ipartek.formacion.tienda.modelos.Producto;
 
 public class DaoProductoFichero implements DaoProducto {
 
