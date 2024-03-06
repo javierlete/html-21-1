@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"
-	import="com.ipartek.formacion.tienda.accesodatos.*,modelos.*, java.math.*, java.time.*"%>
+	import="com.ipartek.formacion.tienda.accesodatos.*,com.ipartek.formacion.tienda.modelos.*, java.math.*, java.time.*"%>
 <!DOCTYPE html>
 <html>
 <head>
