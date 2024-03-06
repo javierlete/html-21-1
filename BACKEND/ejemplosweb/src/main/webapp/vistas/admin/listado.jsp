@@ -1,57 +1,45 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="jakarta.tags.core" prefix="c"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Listado de productos</title>
-</head>
-<body>
+<%@ include file="/vistas/includes/cabecera.jsp" %>
+
+<main>
 	<h1>Listado de productos</h1>
 
-	<table>
-		<thead>
+	<table class="table table-hover table-bordered table-striped">
+		<thead class="table-dark">
 			<tr>
-				<th>Id</th>
+				<th class="text-end">Id</th>
 				<th>Nombre</th>
-				<th>Precio</th>
-				<th>Fecha de caducidad</th>
+				<th class="text-end">Precio</th>
+				<th class="text-center">Fecha de caducidad</th>
 				<th>OPCIONES</th>
 			</tr>
 		</thead>
 		<tbody>
 			<c:forEach items="${productos}" var="p">
 				<tr>
-					<th>${p.id}</th>
+					<th class="text-end">${p.id}</th>
 					<td>${p.nombre}</td>
-					<td>${p.precio}</td>
-					<td>${p.fechaCaducidad}</td>
-					<td><a href="formulario?id=${p.id}">Editar</a> <a href="borrar?id=${p.id}">Borrar</a></td>
+					<td class="text-end"><fmt:formatNumber type="currency"
+							value="${p.precio}" /></td>
+					<td class="text-center"><javatime:format
+							pattern="d' de 'MMMM' de 'yyyy" value="${p.fechaCaducidad}" /></td>
+					<td><a class="btn btn-primary btn-sm"
+						href="formulario?id=${p.id}">Editar</a> <a
+						class="btn btn-danger btn-sm" href="borrar?id=${p.id}">Borrar</a></td>
 				</tr>
 			</c:forEach>
 		</tbody>
-		<tfoot>
+		<tfoot class="table-dark">
 			<tr>
 				<td></td>
 				<td></td>
 				<td></td>
 				<td></td>
-				<td><a href="formulario">Añadir</a></td>
+				<td><a class="btn btn-primary btn-sm" href="formulario">Añadir</a></td>
 			</tr>
 		</tfoot>
 	</table>
-	<%-- <%
-			@SuppressWarnings("unchecked")
-			Iterable<Producto> productos = (Iterable<Producto>)request.getAttribute("productos");
-		
-			for(Producto p: productos) {
-		%>
-		<li><%= p %></li>
-		<%
-			}
-		%> --%>
+</main>
 
-
-</body>
-</html>
+<%@ include file="/vistas/includes/pie.jsp" %>

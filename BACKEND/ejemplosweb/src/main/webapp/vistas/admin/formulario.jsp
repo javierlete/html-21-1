@@ -1,23 +1,47 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="jakarta.tags.core" prefix="c"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Formulario de productos</title>
-</head>
-<body>
+<%@ include file="/vistas/includes/cabecera.jsp" %>
+<main>
 	<h1>Formulario de productos</h1>
 
-	<form action="formulario" method="POST">
-		<input readonly type="number" name="id" value="${producto.id}" placeholder="Id"> <input
-			type="text" name="nombre" value="${producto.nombre}" placeholder="Nombre"> <input
-			type="number" step=".01" min="0" name="precio" value="${producto.precio}" placeholder="Precio">
-		<input type="date" name="fecha" value="${producto.fechaCaducidad}" placeholder="Fecha de caducidad">
+	<form action="formulario" method="POST" class="container">
+		<div class="row mb-2">
+			<label class="col-sm-2 form-label" for="id">Id</label>
+			<div class="col">
+				<input class="form-control" readonly type="number" id="id" name="id"
+					value="${producto.id}" placeholder="Id">
+			</div>
+		</div>
+		<div class="row mb-2">
+			<label class="col-sm-2 form-label" for="nombre">Nombre</label>
+			<div class="col">
+				<input class="form-control" type="text" id="nombre" name="nombre"
+					value="${producto.nombre}" placeholder="Nombre">
+			</div>
+		</div>
+		<div class="row mb-2">
+			<label class="col-sm-2 form-label" for="precio">Precio</label>
+			<div class="col">
+				<input class="form-control" type="number" step=".01" min="0" id="precio" name="precio"
+					value="${producto.precio}" placeholder="Precio">
+			</div>
+		</div>
+		<div class="row mb-2">
+			<label class="col-sm-2 form-label" for="fecha">Fecha de caducidad</label>
+			<div class="col">
+				<input class="form-control" type="date" id="fecha" name="fecha"
+					value="${producto.fechaCaducidad}" placeholder="Fecha de caducidad">
+			</div>
+		</div>
+		
+		<div class="row mb-2">
+			<div class="offset-sm-2 col">
+				<button class="btn btn-primary">Guardar</button>
+			</div>
+		</div>
 
-		<button>Guardar</button>
+		
 	</form>
+</main>
 
-</body>
-</html>
+<%@ include file="/vistas/includes/pie.jsp" %>
