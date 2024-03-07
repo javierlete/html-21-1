@@ -25,8 +25,8 @@
 					<td class="text-center"><javatime:format
 							pattern="d' de 'MMMM' de 'yyyy" value="${p.fechaCaducidad}" /></td>
 					<td><a class="btn btn-primary btn-sm"
-						href="formulario?id=${p.id}">Editar</a> <a
-						class="btn btn-danger btn-sm" href="borrar?id=${p.id}">Borrar</a></td>
+						href="admin/formulario?id=${p.id}">Editar</a> <a
+						class="btn btn-danger btn-sm" href="admin/borrar?id=${p.id}">Borrar</a></td>
 				</tr>
 			</c:forEach>
 		</tbody>
@@ -36,7 +36,7 @@
 				<td></td>
 				<td></td>
 				<td></td>
-				<td><a class="btn btn-primary btn-sm" href="formulario">Añadir</a></td>
+				<td><a class="btn btn-primary btn-sm" href="admin/formulario">Añadir</a></td>
 			</tr>
 		</tfoot>
 	</table>

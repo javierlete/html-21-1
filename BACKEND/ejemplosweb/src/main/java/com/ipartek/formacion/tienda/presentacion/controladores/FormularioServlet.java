@@ -55,6 +55,6 @@ public class FormularioServlet extends HttpServlet {
 			dao.insertar(producto);
 		}
 		
-		response.sendRedirect(request.getContextPath() + "/listado");
+		response.sendRedirect(request.getContextPath() + "/admin/listado");
 	}
 }

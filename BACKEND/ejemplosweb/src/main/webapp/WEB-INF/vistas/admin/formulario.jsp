@@ -4,7 +4,7 @@
 <main>
 	<h1>Formulario de productos</h1>
 
-	<form action="formulario" method="POST" class="container">
+	<form action="admin/formulario" method="POST" class="container">
 		<div class="row mb-2">
 			<label class="col-sm-2 form-label" for="id">Id</label>
 			<div class="col">
