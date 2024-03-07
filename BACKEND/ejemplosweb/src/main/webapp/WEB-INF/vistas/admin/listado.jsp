@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="/vistas/includes/cabecera.jsp" %>
+<%@ include file="/WEB-INF/vistas/includes/cabecera.jsp" %>
 
 <main>
 	<h1>Listado de productos</h1>
@@ -42,4 +42,4 @@
 	</table>
 </main>
 
-<%@ include file="/vistas/includes/pie.jsp" %>
+<%@ include file="/WEB-INF/vistas/includes/pie.jsp" %>

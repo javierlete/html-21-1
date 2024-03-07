@@ -25,7 +25,7 @@ public class ListadoServlet extends HttpServlet {
 		
 		request.setAttribute("productos", productos);
 		
-		request.getRequestDispatcher("/vistas/admin/listado.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/vistas/admin/listado.jsp").forward(request, response);
 	}
 
 	@Override

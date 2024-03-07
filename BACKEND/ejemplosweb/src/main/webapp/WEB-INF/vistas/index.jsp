@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<%@ include file="/vistas/includes/cabecera.jsp"%>
+<%@ include file="/WEB-INF/vistas/includes/cabecera.jsp"%>
 
 <main class="container-fluid">
 	<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 row-cols-xxl-6 g-4">
@@ -22,4 +22,4 @@
 	</div>
 </main>
 
-<%@ include file="/vistas/includes/pie.jsp"%>
+<%@ include file="/WEB-INF/vistas/includes/pie.jsp"%>

@@ -27,7 +27,7 @@ public class BorrarServlet extends HttpServlet {
 			dao.borrar(id);
 		}
 		
-		response.sendRedirect("listado");
+		response.sendRedirect(request.getContextPath() + "/listado");
 	}
 
 	@Override

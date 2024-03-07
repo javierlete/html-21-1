@@ -27,7 +27,7 @@ public class AdminFilter extends HttpFilter implements Filter {
 		if(email == null) {
 			request.setAttribute("error", "Debes iniciar sesión para poder entrar en la parte de administración");
 			
-			request.getRequestDispatcher("/vistas/login.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/vistas/login.jsp").forward(request, response);
 			
 			return;
 		}

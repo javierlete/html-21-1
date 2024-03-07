@@ -25,7 +25,7 @@ public class IndexServlet extends HttpServlet {
 		
 		request.setAttribute("productos", productos);
 		
-		request.getRequestDispatcher("/vistas/index.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/vistas/index.jsp").forward(request, response);
 	}
 
 	@Override

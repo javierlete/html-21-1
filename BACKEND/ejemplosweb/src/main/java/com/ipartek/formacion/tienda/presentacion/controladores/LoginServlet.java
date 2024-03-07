@@ -15,7 +15,7 @@ public class LoginServlet extends HttpServlet {
     
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/vistas/login.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/vistas/login.jsp").forward(request, response);
 	}
 
 	@Override
@@ -32,7 +32,7 @@ public class LoginServlet extends HttpServlet {
 			request.setAttribute("email", email);
 			request.setAttribute("error", "Email o contraseña incorrectos");
 			
-			request.getRequestDispatcher("/vistas/login.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/vistas/login.jsp").forward(request, response);
 		}
 	}
 }

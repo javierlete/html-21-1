@@ -10,7 +10,7 @@
 <meta charset="UTF-8">
 <title>Listado de productos</title>
 
-<base href="/ejemplosweb/">
+<base href="${pageContext.request.contextPath}/">
 
 <!-- Bootstrap -->
 <link href="css/bootstrap.min.css" rel="stylesheet">

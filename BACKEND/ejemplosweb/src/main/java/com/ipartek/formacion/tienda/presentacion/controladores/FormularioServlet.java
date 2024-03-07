@@ -30,7 +30,7 @@ public class FormularioServlet extends HttpServlet {
 			request.setAttribute("producto", dao.obtenerPorId(id));
 		}
 		
-		request.getRequestDispatcher("/vistas/admin/formulario.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/vistas/admin/formulario.jsp").forward(request, response);
 	}
 
 	@Override
@@ -55,6 +55,6 @@ public class FormularioServlet extends HttpServlet {
 			dao.insertar(producto);
 		}
 		
-		response.sendRedirect("listado");
+		response.sendRedirect(request.getContextPath() + "/listado");
 	}
 }
