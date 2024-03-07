@@ -5,12 +5,14 @@
 <%@ taglib uri="http://sargue.net/jsptags/time" prefix="javatime"%>
 <fmt:setLocale value="es-ES" />
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
 <meta charset="UTF-8">
 <title>Listado de productos</title>
 
 <base href="${pageContext.request.contextPath}/">
+
+<link href="imgs/icono.svg" rel="icon">
 
 <!-- Bootstrap -->
 <link href="css/bootstrap.min.css" rel="stylesheet">
