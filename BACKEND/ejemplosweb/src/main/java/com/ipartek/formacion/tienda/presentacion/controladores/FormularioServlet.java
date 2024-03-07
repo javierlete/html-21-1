@@ -30,6 +30,8 @@ public class FormularioServlet extends HttpServlet {
 			request.setAttribute("producto", dao.obtenerPorId(id));
 		}
 		
+		request.setAttribute("hoy", LocalDate.now());
+		
 		request.getRequestDispatcher("/WEB-INF/vistas/admin/formulario.jsp").forward(request, response);
 	}
 
