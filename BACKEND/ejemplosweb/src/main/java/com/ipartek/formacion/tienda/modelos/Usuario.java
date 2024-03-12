@@ -25,15 +25,16 @@ public class Usuario {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(length = 50)
+	@Column(length = 50, nullable = false)
 	private String email;
 	
-	@Column(length = 50)
+	@Column(length = 50, nullable = false)
 	private String password;
 	
-	@Column(length = 50)
+	@Column(length = 50, nullable = false)
 	private String nombre;
 	
-	@Column(length = 10)
-	private String rol;
+	@Builder.Default
+	@Column(length = 10, nullable = false)
+	private String rol = "USER";
 }

@@ -31,7 +31,11 @@ public class Producto implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
+	@Column(length = 50, nullable = false)
 	private String nombre;
+	
+	@Column(nullable = false)
 	private BigDecimal precio;
 	
 	@Column(name = "fecha_caducidad")
