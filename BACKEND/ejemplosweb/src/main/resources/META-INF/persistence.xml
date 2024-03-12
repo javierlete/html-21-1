@@ -7,10 +7,12 @@
 
         <properties>    
             <!-- Database connection settings -->
-            <property name="jakarta.persistence.jdbc.url" value="jdbc:sqlite:ejemplojpa.sqlite" />
-            <property name="jakarta.persistence.jdbc.user" value="sa" />
-            <property name="jakarta.persistence.jdbc.password" value="" />
-            <property name="jakarta.persistence.jdbc.driver" value="org.sqlite.JDBC" />            
+            <!--<property name="jakarta.persistence.jdbc.url" value="jdbc:sqlite:ejemplojpa.sqlite" />-->
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/tiendajpa" />
+            <property name="jakarta.persistence.jdbc.user" value="root" />
+            <property name="jakarta.persistence.jdbc.password" value="1234" />
+            <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />
+            <!--<property name="jakarta.persistence.jdbc.driver" value="org.sqlite.JDBC" />-->            
 
             <!-- Automatically export the schema -->
             <property name="jakarta.persistence.schema-generation.database.action" value="create-drop" />
