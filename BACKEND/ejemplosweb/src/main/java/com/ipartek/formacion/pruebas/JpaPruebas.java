@@ -12,7 +12,7 @@ import jakarta.persistence.Persistence;
 
 public class JpaPruebas {
 	public static void main(String[] args) {
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("org.ipartek.formacion.tienda.modelos");
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("com.ipartek.formacion.tienda.modelos");
 		EntityManager em = emf.createEntityManager();
 		
 		EntityTransaction t = em.getTransaction();

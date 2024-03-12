@@ -31,6 +31,9 @@ public class FabricaDao {
 			case "mysql":
 				daoProducto = new DaoProductoMySql(baseDeDatos, usuario, password);
 				break;
+			case "jpa":
+				daoProducto = new DaoProductoJpa();
+				break;
 			default:
 				throw new AccesoDatosException("No se reconoce el tipo " + tipo);
 			}
