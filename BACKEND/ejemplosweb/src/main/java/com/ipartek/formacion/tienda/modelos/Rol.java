@@ -1,44 +1,36 @@
 package com.ipartek.formacion.tienda.modelos;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-// LOMBOK
+//LOMBOK
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 
-// JPA
+//JPA
 @Entity
-@Table(name = "usuarios")
-public class Usuario {
+@Table(name = "roles")
+public class Rol {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(length = 50, nullable = false)
-	private String email;
-	
-	@Column(length = 50, nullable = false)
-	private String password;
-	
-	@Column(length = 50, nullable = false)
+	@Column(length = 20, nullable = false)
 	private String nombre;
 	
-	@Builder.Default
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(nullable = false)
-	private Rol rol = Rol.builder().nombre("USER").build();
+	@OneToMany(mappedBy = "rol")
+	private List<Usuario> usuarios; 
 }

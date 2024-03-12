@@ -10,7 +10,7 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Persistence;
 
-public class JpaPruebas {
+public class ProductoJpaPruebas {
 	public static void main(String[] args) {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("com.ipartek.formacion.tienda.modelos");
 		EntityManager em = emf.createEntityManager();
@@ -26,7 +26,6 @@ public class JpaPruebas {
 		t.commit();
 		
 		t = em.getTransaction();
-		
 		t.begin();
 
 		em.remove(em.find(Producto.class, 2L));
@@ -34,7 +33,6 @@ public class JpaPruebas {
 		t.commit();
 
 		t = em.getTransaction();
-		
 		t.begin();
 		
 		em.merge(Producto.builder().id(1L).nombre("Modificado").precio(new BigDecimal("2234")).fechaCaducidad(LocalDate.now()).build());
@@ -42,7 +40,6 @@ public class JpaPruebas {
 		t.commit();
 		
 		t = em.getTransaction();
-		
 		t.begin();
 		
 		var productos = em.createQuery("from Producto", Producto.class).getResultList();
@@ -53,12 +50,7 @@ public class JpaPruebas {
 		
 		t.commit();
 		
-		em.close();
-		
-		em = emf.createEntityManager();
-		
 		t = em.getTransaction();
-		
 		t.begin();
 		
 		var producto = em.find(Producto.class, 1L);
@@ -67,12 +59,7 @@ public class JpaPruebas {
 		
 		t.commit();
 		
-		em.close();
-		
-		em = emf.createEntityManager();
-		
 		t = em.getTransaction();
-		
 		t.begin();
 		
 		String nombre = "rodu";
@@ -82,6 +69,9 @@ public class JpaPruebas {
 			System.out.println(p);
 		}
 		
+		t.commit();
+		
+		em.close();
 		emf.close();
 	}
 }
