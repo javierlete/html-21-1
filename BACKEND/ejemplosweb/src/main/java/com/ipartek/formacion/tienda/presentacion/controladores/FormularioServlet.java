@@ -1,11 +1,11 @@
 package com.ipartek.formacion.tienda.presentacion.controladores;
 
+import static com.ipartek.formacion.tienda.presentacion.controladores.GlobalesControladores.ADMIN_NEGOCIO;
+
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-import com.ipartek.formacion.tienda.accesodatos.DaoProducto;
-import com.ipartek.formacion.tienda.accesodatos.FabricaDaoImpl;
 import com.ipartek.formacion.tienda.modelos.Producto;
 
 import jakarta.servlet.ServletException;
@@ -18,8 +18,6 @@ import jakarta.servlet.http.HttpServletResponse;
 public class FormularioServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
-	private static final DaoProducto dao = new FabricaDaoImpl().getDaoProducto();
-	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String sId = request.getParameter("id");
@@ -27,7 +25,7 @@ public class FormularioServlet extends HttpServlet {
 		if(sId != null) {
 			Long id = Long.parseLong(sId);
 			
-			request.setAttribute("producto", dao.obtenerPorId(id));
+			request.setAttribute("producto", ADMIN_NEGOCIO.verDetalleProducto(id));
 		}
 		
 		request.setAttribute("hoy", LocalDate.now());
@@ -52,9 +50,9 @@ public class FormularioServlet extends HttpServlet {
 			
 			producto.setId(id);
 			
-			dao.modificar(producto);
+			ADMIN_NEGOCIO.modificarProducto(producto);
 		} else {
-			dao.insertar(producto);
+			ADMIN_NEGOCIO.agregarProducto(producto);
 		}
 		
 		response.sendRedirect(request.getContextPath() + "/admin/listado");

@@ -1,9 +1,7 @@
 package com.ipartek.formacion.tienda.presentacion.controladores;
+import static com.ipartek.formacion.tienda.presentacion.controladores.GlobalesControladores.ADMIN_NEGOCIO;
 
 import java.io.IOException;
-
-import com.ipartek.formacion.tienda.accesodatos.DaoProducto;
-import com.ipartek.formacion.tienda.accesodatos.FabricaDaoImpl;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -15,8 +13,6 @@ import jakarta.servlet.http.HttpServletResponse;
 public class BorrarServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
-	private static final DaoProducto dao = new FabricaDaoImpl().getDaoProducto();
-	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String sId = request.getParameter("id");
@@ -24,7 +20,7 @@ public class BorrarServlet extends HttpServlet {
 		if(sId != null) {
 			Long id = Long.parseLong(sId);
 			
-			dao.borrar(id);
+			ADMIN_NEGOCIO.borrarProducto(id);
 		}
 		
 		response.sendRedirect(request.getContextPath() + "/admin/listado");

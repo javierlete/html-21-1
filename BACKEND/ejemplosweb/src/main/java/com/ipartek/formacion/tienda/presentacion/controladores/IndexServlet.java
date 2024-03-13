@@ -1,9 +1,8 @@
 package com.ipartek.formacion.tienda.presentacion.controladores;
 
-import java.io.IOException;
+import static com.ipartek.formacion.tienda.presentacion.controladores.GlobalesControladores.ANONIMO_NEGOCIO;
 
-import com.ipartek.formacion.tienda.accesodatos.DaoProducto;
-import com.ipartek.formacion.tienda.accesodatos.FabricaDaoImpl;
+import java.io.IOException;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -19,9 +18,7 @@ public class IndexServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		
-		DaoProducto dao = new FabricaDaoImpl().getDaoProducto();
-		
-		var productos = dao.obtenerTodos();
+		var productos = ANONIMO_NEGOCIO.listarProductos();
 		
 		request.setAttribute("productos", productos);
 		

@@ -1,10 +1,10 @@
 package com.ipartek.formacion.tienda.presentacion.controladores;
 
+import static com.ipartek.formacion.tienda.presentacion.controladores.GlobalesControladores.ANONIMO_NEGOCIO;
+
 import java.io.IOException;
 import java.util.Map;
 
-import com.ipartek.formacion.tienda.accesodatos.DaoProducto;
-import com.ipartek.formacion.tienda.accesodatos.FabricaDaoImpl;
 import com.ipartek.formacion.tienda.modelos.Producto;
 
 import jakarta.servlet.ServletException;
@@ -16,8 +16,6 @@ import jakarta.servlet.http.HttpServletResponse;
 @WebServlet("/carrito")
 public class CarritoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-	private static final DaoProducto dao = new FabricaDaoImpl().getDaoProducto();
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -34,7 +32,7 @@ public class CarritoServlet extends HttpServlet {
 			if (op != null && "quitar".equals(op)) {
 				carrito.remove(id);
 			} else {
-				var producto = dao.obtenerPorId(id);
+				var producto = ANONIMO_NEGOCIO.verDetalleProducto(id);
 
 				carrito.put(producto.getId(), producto);
 			}

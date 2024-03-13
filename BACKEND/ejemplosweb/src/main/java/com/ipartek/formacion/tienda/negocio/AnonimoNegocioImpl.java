@@ -1,9 +1,10 @@
 package com.ipartek.formacion.tienda.negocio;
 
+import static com.ipartek.formacion.tienda.negocio.GlobalesNegocio.DAO_PRODUCTO;
+import static com.ipartek.formacion.tienda.negocio.GlobalesNegocio.DAO_USUARIO;
+
 import com.ipartek.formacion.tienda.modelos.Producto;
 import com.ipartek.formacion.tienda.modelos.Usuario;
-
-import static com.ipartek.formacion.tienda.negocio.GlobalesNegocio.*;
 
 public class AnonimoNegocioImpl implements AnonimoNegocio {
 	
@@ -20,26 +21,22 @@ public class AnonimoNegocioImpl implements AnonimoNegocio {
 
 	@Override
 	public Iterable<Producto> listarProductos() {
-		// TODO Auto-generated method stub
-		return null;
+		return DAO_PRODUCTO.obtenerTodos();
 	}
 
 	@Override
 	public Producto verDetalleProducto(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return DAO_PRODUCTO.obtenerPorId(id);
 	}
 
 	@Override
 	public Iterable<Producto> listarProductosCarrito() {
-		// TODO Auto-generated method stub
-		return null;
+		throw new NegocioException("NO IMPLEMENTADO");
 	}
 
 	@Override
 	public void agregarProductoACarrito(Producto producto) {
-		// TODO Auto-generated method stub
-		
+		throw new NegocioException("NO IMPLEMENTADO");		
 	}
 
 }
