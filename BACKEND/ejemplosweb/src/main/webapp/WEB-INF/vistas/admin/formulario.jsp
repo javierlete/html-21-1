@@ -30,7 +30,11 @@
 			<label class="col-sm-2 form-label" for="precio">Precio</label>
 			<div class="col">
 				<input class="form-control" type="number" step=".01"
+<<<<<<< HEAD
 					id="precio" name="precio" value="${producto.precio}"
+=======
+					min="0" id="precio" name="precio" value="${producto.precio}"
+>>>>>>> branch 'main' of https://github.com/javierlete/html-21-1
 					placeholder="Precio">
 				<div class="invalid-feedback">El precio es obligatorio y debe
 					ser positivo</div>
