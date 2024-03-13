@@ -11,7 +11,7 @@
 	
 	<ul>
 		<%
-			DaoProducto dao = new FabricaDao().getDaoProducto();
+		DaoProducto dao = new FabricaDaoImpl().getDaoProducto();
 			
 			for(Producto p: dao.obtenerTodos()) {
 		%>

@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import com.ipartek.formacion.tienda.accesodatos.DaoProducto;
-import com.ipartek.formacion.tienda.accesodatos.FabricaDao;
+import com.ipartek.formacion.tienda.accesodatos.FabricaDaoImpl;
 import com.ipartek.formacion.tienda.modelos.Producto;
 
 import jakarta.servlet.ServletException;
@@ -36,7 +36,7 @@ public class InsertarServlet extends HttpServlet {
 		
 		Producto producto = new Producto(null, nombre, precio, fecha);
 		
-		DaoProducto dao = new FabricaDao().getDaoProducto();
+		DaoProducto dao = new FabricaDaoImpl().getDaoProducto();
 		
 		producto = dao.insertar(producto);
 		

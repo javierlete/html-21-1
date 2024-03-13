@@ -2,12 +2,12 @@ package com.ipartek.formacion.pruebas;
 
 import java.math.BigDecimal;
 
-import com.ipartek.formacion.tienda.accesodatos.FabricaDao;
+import com.ipartek.formacion.tienda.accesodatos.FabricaDaoImpl;
 import com.ipartek.formacion.tienda.modelos.Producto;
 
 public class ProductoDaoPruebas {
 	public static void main(String[] args) {
-		var dao = new FabricaDao().getDaoProducto();
+		var dao = new FabricaDaoImpl().getDaoProducto();
 		
 		dao.insertar(Producto.builder().nombre("Prueba1").precio(new BigDecimal("1234")).build());
 		dao.insertar(Producto.builder().nombre("Prueba2").precio(new BigDecimal("2234")).build());

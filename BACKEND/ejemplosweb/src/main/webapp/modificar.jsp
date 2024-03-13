@@ -21,22 +21,22 @@
 
 	<%
 	String sId = request.getParameter("id");
-	String nombre = request.getParameter("nombre");
-	String sPrecio = request.getParameter("precio");
-	String sFecha = request.getParameter("fecha");
+		String nombre = request.getParameter("nombre");
+		String sPrecio = request.getParameter("precio");
+		String sFecha = request.getParameter("fecha");
 
-	if (sId != null) {
+		if (sId != null) {
 
-		Long id = Long.parseLong(sId);
-		BigDecimal precio = new BigDecimal(sPrecio);
-		LocalDate fecha = LocalDate.parse(sFecha);
+			Long id = Long.parseLong(sId);
+			BigDecimal precio = new BigDecimal(sPrecio);
+			LocalDate fecha = LocalDate.parse(sFecha);
 
-		Producto producto = new Producto(id, nombre, precio, fecha);
+			Producto producto = new Producto(id, nombre, precio, fecha);
 
-		DaoProducto dao = new FabricaDao().getDaoProducto();
+			DaoProducto dao = new FabricaDaoImpl().getDaoProducto();
 
-		producto = dao.modificar(producto);
-	}
+			producto = dao.modificar(producto);
+		}
 	%>
 
 </body>

@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.Map;
 
 import com.ipartek.formacion.tienda.accesodatos.DaoProducto;
-import com.ipartek.formacion.tienda.accesodatos.FabricaDao;
+import com.ipartek.formacion.tienda.accesodatos.FabricaDaoImpl;
 import com.ipartek.formacion.tienda.modelos.Producto;
 
 import jakarta.servlet.ServletException;
@@ -17,7 +17,7 @@ import jakarta.servlet.http.HttpServletResponse;
 public class CarritoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	private static final DaoProducto dao = new FabricaDao().getDaoProducto();
+	private static final DaoProducto dao = new FabricaDaoImpl().getDaoProducto();
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)

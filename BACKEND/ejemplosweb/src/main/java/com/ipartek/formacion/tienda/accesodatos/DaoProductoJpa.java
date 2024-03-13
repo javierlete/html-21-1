@@ -1,18 +1,14 @@
 package com.ipartek.formacion.tienda.accesodatos;
 
-import com.ipartek.formacion.tienda.modelos.Producto;
+import static com.ipartek.formacion.tienda.accesodatos.GlobalesAccesoDatos.EMF;
 
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
+import com.ipartek.formacion.tienda.modelos.Producto;
 
 public class DaoProductoJpa implements DaoProducto {
 
-	private static final EntityManagerFactory emf = Persistence
-			.createEntityManagerFactory("com.ipartek.formacion.tienda.modelos");
-
 	@Override
 	public Iterable<Producto> obtenerTodos() {
-		var em = emf.createEntityManager();
+		var em = EMF.createEntityManager();
 		var t = em.getTransaction();
 		t.begin();
 
@@ -26,7 +22,7 @@ public class DaoProductoJpa implements DaoProducto {
 
 	@Override
 	public Producto obtenerPorId(Long id) {
-		var em = emf.createEntityManager();
+		var em = EMF.createEntityManager();
 		var t = em.getTransaction();
 		t.begin();
 
@@ -40,7 +36,7 @@ public class DaoProductoJpa implements DaoProducto {
 
 	@Override
 	public Producto insertar(Producto producto) {
-		var em = emf.createEntityManager();
+		var em = EMF.createEntityManager();
 		var t = em.getTransaction();
 		t.begin();
 
@@ -54,7 +50,7 @@ public class DaoProductoJpa implements DaoProducto {
 
 	@Override
 	public Producto modificar(Producto producto) {
-		var em = emf.createEntityManager();
+		var em = EMF.createEntityManager();
 		var t = em.getTransaction();
 		t.begin();
 
@@ -68,7 +64,7 @@ public class DaoProductoJpa implements DaoProducto {
 
 	@Override
 	public void borrar(Long id) {
-		var em = emf.createEntityManager();
+		var em = EMF.createEntityManager();
 		var t = em.getTransaction();
 		t.begin();
 
@@ -80,7 +76,7 @@ public class DaoProductoJpa implements DaoProducto {
 
 	@Override
 	public Iterable<Producto> buscarPorNombre(String nombre) {
-		var em = emf.createEntityManager();
+		var em = EMF.createEntityManager();
 		var t = em.getTransaction();
 		t.begin();
 

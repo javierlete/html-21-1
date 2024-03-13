@@ -3,7 +3,7 @@ package com.ipartek.formacion.tienda.presentacion.controladores;
 import java.io.IOException;
 
 import com.ipartek.formacion.tienda.accesodatos.DaoProducto;
-import com.ipartek.formacion.tienda.accesodatos.FabricaDao;
+import com.ipartek.formacion.tienda.accesodatos.FabricaDaoImpl;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -19,7 +19,7 @@ public class ListadoServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		
-		DaoProducto dao = new FabricaDao().getDaoProducto();
+		DaoProducto dao = new FabricaDaoImpl().getDaoProducto();
 		
 		var productos = dao.obtenerTodos();
 		

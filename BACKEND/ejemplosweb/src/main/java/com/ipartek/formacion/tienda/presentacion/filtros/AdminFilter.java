@@ -2,6 +2,8 @@ package com.ipartek.formacion.tienda.presentacion.filtros;
 
 import java.io.IOException;
 
+import com.ipartek.formacion.tienda.modelos.Usuario;
+
 import jakarta.servlet.Filter;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -22,10 +24,10 @@ public class AdminFilter extends HttpFilter implements Filter {
 		// HttpServletResponse res = (HttpServletResponse)response;
 		
 		HttpSession session = req.getSession();
-		String email = (String) session.getAttribute("email");
+		var usuario = (Usuario) session.getAttribute("usuario");
 		
-		if(email == null) {
-			request.setAttribute("error", "Debes iniciar sesión para poder entrar en la parte de administración");
+		if(usuario == null || !usuario.getRol().getNombre().equals("ADMIN")) {
+			request.setAttribute("error", "Debes iniciar sesión y ser administrador para poder entrar en la parte de administración");
 			
 			request.getRequestDispatcher("/WEB-INF/vistas/login.jsp").forward(request, response);
 			

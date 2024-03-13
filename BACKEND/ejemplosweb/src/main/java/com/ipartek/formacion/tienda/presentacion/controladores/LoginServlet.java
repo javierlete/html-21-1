@@ -1,5 +1,7 @@
 package com.ipartek.formacion.tienda.presentacion.controladores;
 
+import static com.ipartek.formacion.tienda.presentacion.controladores.GlobalesControladores.ANONIMO_NEGOCIO;
+
 import java.io.IOException;
 
 import jakarta.servlet.ServletException;
@@ -23,11 +25,13 @@ public class LoginServlet extends HttpServlet {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		
-		if("javier@email.net".equals(email) && "contra".equals(password)) {
+		var usuario = ANONIMO_NEGOCIO.verificarLogin(email, password);
+		
+		if(usuario != null) {
 			HttpSession session = request.getSession();
-			session.setAttribute("email", email);
+			session.setAttribute("usuario", usuario);
 			
-			response.sendRedirect(request.getContextPath() + "/admin/listado");
+			response.sendRedirect(request.getContextPath() + "/index");
 		} else {
 			request.setAttribute("email", email);
 			request.setAttribute("error", "Email o contraseña incorrectos");

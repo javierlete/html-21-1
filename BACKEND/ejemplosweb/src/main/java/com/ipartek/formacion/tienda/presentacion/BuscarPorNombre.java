@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import com.ipartek.formacion.tienda.accesodatos.DaoProducto;
-import com.ipartek.formacion.tienda.accesodatos.FabricaDao;
+import com.ipartek.formacion.tienda.accesodatos.FabricaDaoImpl;
 import com.ipartek.formacion.tienda.modelos.Producto;
 
 import jakarta.servlet.ServletException;
@@ -40,7 +40,7 @@ public class BuscarPorNombre extends HttpServlet {
 					<ul>
 					""", nombre));
 		
-		DaoProducto dao = new FabricaDao().getDaoProducto();
+		DaoProducto dao = new FabricaDaoImpl().getDaoProducto();
 		
 		for(Producto p: dao.buscarPorNombre(nombre)) {
 			out.append(String.format("<li>%s</li>\n", p));
