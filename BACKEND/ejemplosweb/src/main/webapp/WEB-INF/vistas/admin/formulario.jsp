@@ -4,6 +4,11 @@
 <main>
 	<h1>Formulario de productos</h1>
 
+	<p>
+	${errores}
+	${errores.fechaCaducidad}
+	</p>
+
 	<form action="admin/formulario" method="POST"
 		class="container needs-validation" novalidate>
 		<div class="row mb-2">
@@ -16,7 +21,7 @@
 		<div class="row mb-2">
 			<label class="col-sm-2 form-label" for="nombre">Nombre</label>
 			<div class="col">
-				<input required class="form-control" type="text" id="nombre"
+				<input class="form-control" type="text" id="nombre"
 					name="nombre" value="${producto.nombre}" placeholder="Nombre">
 				<div class="invalid-feedback">El nombre es obligatorio</div>
 			</div>
@@ -24,7 +29,7 @@
 		<div class="row mb-2">
 			<label class="col-sm-2 form-label" for="precio">Precio</label>
 			<div class="col">
-				<input required class="form-control" type="number" step=".01"
+				<input class="form-control" type="number" step=".01"
 					min="0" id="precio" name="precio" value="${producto.precio}"
 					placeholder="Precio">
 				<div class="invalid-feedback">El precio es obligatorio y debe
