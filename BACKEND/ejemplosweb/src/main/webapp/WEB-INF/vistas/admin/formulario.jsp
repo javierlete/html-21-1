@@ -4,11 +4,6 @@
 <main>
 	<h1>Formulario de productos</h1>
 
-	<p>
-	${errores}
-	${errores.fechaCaducidad}
-	</p>
-
 	<form action="admin/formulario" method="POST"
 		class="container needs-validation" novalidate>
 		<div class="row mb-2">
@@ -21,30 +16,28 @@
 		<div class="row mb-2">
 			<label class="col-sm-2 form-label" for="nombre">Nombre</label>
 			<div class="col">
-				<input class="form-control" type="text" id="nombre"
+				<input class="form-control ${errores.nombre != null ? 'is-invalid' : '' }" type="text" id="nombre"
 					name="nombre" value="${producto.nombre}" placeholder="Nombre">
-				<div class="invalid-feedback">El nombre es obligatorio</div>
+				<div class="invalid-feedback">${errores.nombre}</div>
 			</div>
 		</div>
 		<div class="row mb-2">
 			<label class="col-sm-2 form-label" for="precio">Precio</label>
 			<div class="col">
-				<input class="form-control" type="number" step=".01"
+				<input class="form-control ${errores.precio != null ? 'is-invalid' : '' }" type="number" step=".01"
 					id="precio" name="precio" value="${producto.precio}"
 					placeholder="Precio">
-				<div class="invalid-feedback">El precio es obligatorio y debe
-					ser positivo</div>
+				<div class="invalid-feedback">${errores.precio}</div>
 			</div>
 		</div>
 		<div class="row mb-2">
 			<label class="col-sm-2 form-label" for="fecha">Fecha de
 				caducidad</label>
 			<div class="col">
-				<input class="form-control"
+				<input class="form-control ${errores.fechaCaducidad != null ? 'is-invalid' : '' }"
 					type="date" id="fecha" name="fecha"
 					value="${producto.fechaCaducidad}" placeholder="Fecha de caducidad">
-				<div class="invalid-feedback">La fecha de caducidad debe ser
-					como mínimo de hoy</div>
+				<div class="invalid-feedback">${errores.fechaCaducidad}</div>
 			</div>
 		</div>
 
