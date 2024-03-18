@@ -1,13 +1,10 @@
 package com.ipartek.formacion.ejemplospring;
 
-import java.math.BigDecimal;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.ipartek.formacion.ejemplospring.entidades.Producto;
 import com.ipartek.formacion.ejemplospring.servicios.AdminService;
 
 @SpringBootApplication
@@ -25,8 +22,8 @@ public class EjemplospringApplication implements CommandLineRunner {
 	
 	@Override
 	public void run(String... args) throws Exception {
-		adminService.agregarProducto(Producto.builder().nombre("Producto4").precio(new BigDecimal("4234.5")).build());
-		adminService.agregarProducto(Producto.builder().nombre("Producto5").precio(new BigDecimal("5234.5")).build());
+//		adminService.agregarProducto(Producto.builder().nombre("Producto4").precio(new BigDecimal("4234.5")).build());
+//		adminService.agregarProducto(Producto.builder().nombre("Producto5").precio(new BigDecimal("5234.5")).build());
 		
 		for(var producto: adminService.listarProductos()) {
 			System.out.println(producto);
