@@ -23,4 +23,13 @@ public class IndexController {
 		
 		return "index";
 	}
+	
+	@GetMapping("/carrito")
+	public String carrito(Long id, Model modelo) {
+		var producto = anonimoService.verDetalleProducto(id);
+		
+		modelo.addAttribute("producto", producto);
+		
+		return "carrito";
+	}
 }
