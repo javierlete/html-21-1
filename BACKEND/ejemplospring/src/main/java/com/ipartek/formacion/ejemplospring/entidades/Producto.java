@@ -4,6 +4,9 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -46,6 +49,7 @@ public class Producto implements Serializable {
 	@NotNull
 	private BigDecimal precio;
 	
+	@DateTimeFormat(iso = ISO.DATE)
 	@Column(name = "fecha_caducidad")
 	@Future
 	private LocalDate fechaCaducidad;

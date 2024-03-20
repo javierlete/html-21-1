@@ -9,7 +9,7 @@
 			<div class="row mb-2">
 				<label class="col-md-2 form-label" for="id">Id</label>
 				<div class="col">
-					<input class="form-control" th:classappend="${#fields.hasErrors('id') ? 'is-invalid' : ''}" th:field="*{id}">
+					<input readonly class="form-control" th:classappend="${#fields.hasErrors('id') ? 'is-invalid' : ''}" th:field="*{id}">
 					<div class="invalid-feedback" th:errors="*{id}"></div>
 				</div>
 			</div>
@@ -23,14 +23,14 @@
 			<div class="row mb-2">
 				<label class="col-md-2 form-label" for="precio">Precio</label>
 				<div class="col">
-					<input class="form-control" th:classappend="${#fields.hasErrors('precio') ? 'is-invalid' : ''}" th:field="*{precio}">
+					<input type="number" step=".01" class="form-control" th:classappend="${#fields.hasErrors('precio') ? 'is-invalid' : ''}" th:field="*{precio}">
 					<div class="invalid-feedback" th:errors="*{precio}"></div>
 				</div>
 			</div>
 			<div class="row mb-2">
 				<label class="col-md-2 form-label" for="fechaCaducidad" >Fecha de caducidad</label>
 				<div class="col">
-					<input class="form-control" th:classappend="${#fields.hasErrors('fechaCaducidad') ? 'is-invalid' : ''}" th:field="*{fechaCaducidad}">
+					<input class="form-control" type="date" th:classappend="${#fields.hasErrors('fechaCaducidad') ? 'is-invalid' : ''}" th:field="*{fechaCaducidad}">
 					<div class="invalid-feedback" th:errors="*{fechaCaducidad}"></div>
 				</div>
 			</div>
