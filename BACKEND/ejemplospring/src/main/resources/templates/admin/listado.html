@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{_global :: plantilla(~{::title}, ~{::main})}" lang="es">
+<head>
+<title>Administración</title>
+</head>
+<body>
+	<main class="container-fluid">
+		<table class="table table-bordered table-hover table-striped">
+			<caption>Listado de productos</caption>
+			<thead class="table-dark">
+				<tr>
+					<th class="text-end">Id</th>
+					<th>Nombre</th>
+					<th class="text-end">Precio</th>
+					<th>Fecha de caducidad</th>
+					<th>OPCIONES</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="p: ${productos}">
+					<th class="text-end" th:text="${p.id}">1</th>
+					<td th:text="${p.nombre}">PRODUCTO DEMO</td>
+					<td class="text-end" th:text="${p.precio}">1234,56 €</td>
+					<td th:text="${p.fechaCaducidad}">5 de enero de 2025</td>
+					<td>
+						<a class="btn btn-primary btn-sm" href="#">Editar</a>
+						<a class="btn btn-danger btn-sm" href="#">Borrar</a>
+					</td>
+				</tr>
+			</tbody>
+			<tfoot class="table-dark">
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>
+						<a class="btn btn-primary btn-sm" href="#">Añadir</a>
+					</td>
+				</tr>
+			</tfoot>
+		</table>		
+	</main>
+</body>
+</html>
