@@ -5,29 +5,33 @@
 </head>
 <body>
 	<main class="container-fluid">
-		<form action="admin/formulario" method="post">
+		<form action="admin/formulario" method="post" th:object="${producto}">
 			<div class="row mb-2">
 				<label class="col-md-2 form-label" for="id">Id</label>
 				<div class="col">
-					<input class="form-control" id="id" name="id" th:value="${producto.id}">
+					<input class="form-control" th:classappend="${#fields.hasErrors('id') ? 'is-invalid' : ''}" th:field="*{id}">
+					<div class="invalid-feedback" th:errors="*{id}"></div>
 				</div>
 			</div>
 			<div class="row mb-2">
 				<label class="col-md-2 form-label" for="nombre">Nombre</label>
 				<div class="col">
-					<input class="form-control" id="nombre" name="nombre" th:value="${producto.nombre}">
+					<input class="form-control" th:classappend="${#fields.hasErrors('nombre') ? 'is-invalid' : ''}" th:field="*{nombre}">
+					<div class="invalid-feedback" th:errors="*{nombre}"></div>
 				</div>
 			</div>
 			<div class="row mb-2">
 				<label class="col-md-2 form-label" for="precio">Precio</label>
 				<div class="col">
-					<input class="form-control" id="precio" name="precio" th:value="${producto.precio}">
+					<input class="form-control" th:classappend="${#fields.hasErrors('precio') ? 'is-invalid' : ''}" th:field="*{precio}">
+					<div class="invalid-feedback" th:errors="*{precio}"></div>
 				</div>
 			</div>
 			<div class="row mb-2">
 				<label class="col-md-2 form-label" for="fechaCaducidad" >Fecha de caducidad</label>
 				<div class="col">
-					<input class="form-control" id="fechaCaducidad" name="fechaCaducidad" th:value="${producto.fechaCaducidad}">
+					<input class="form-control" th:classappend="${#fields.hasErrors('fechaCaducidad') ? 'is-invalid' : ''}" th:field="*{fechaCaducidad}">
+					<div class="invalid-feedback" th:errors="*{fechaCaducidad}"></div>
 				</div>
 			</div>
 			<div class="row mb-2">

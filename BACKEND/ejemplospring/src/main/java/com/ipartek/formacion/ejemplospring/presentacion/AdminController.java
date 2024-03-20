@@ -3,6 +3,7 @@ package com.ipartek.formacion.ejemplospring.presentacion;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -10,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.ipartek.formacion.ejemplospring.entidades.Producto;
 import com.ipartek.formacion.ejemplospring.servicios.AdminService;
+
+import jakarta.validation.Valid;
 
 @Controller
 @RequestMapping("/admin")
@@ -41,7 +44,11 @@ public class AdminController {
 	}
 	
 	@PostMapping("/formulario")
-	public String formularioPost(Producto producto) {
+	public String formularioPost(@Valid Producto producto, BindingResult bindingResult) {
+		
+		if(bindingResult.hasErrors()) {
+			return "admin/formulario";
+		}
 		
 		if(producto.getId() == null) {
 			servicio.agregarProducto(producto);
