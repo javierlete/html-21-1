@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" th:replace="~{_global :: plantilla(~{::title}, ~{::main})}" lang="es">
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{_global :: plantilla(~{::title}, ~{::main})}" lang="es">
 <head>
 <title>Administración</title>
 </head>
 <body>
 	<main class="container-fluid">
+		<pre th:text="'-' + ${#locale.country} + '-'">US</pre>
 		<table class="table table-bordered table-hover table-striped">
 			<caption>Listado de productos</caption>
 			<thead class="table-dark">
@@ -20,12 +22,15 @@
 				<tr th:each="p: ${productos}">
 					<th class="text-end" th:text="${p.id}">1</th>
 					<td th:text="${p.nombre}">PRODUCTO DEMO</td>
-					<td class="text-end" th:text="${p.precio}">1234,56 €</td>
-					<td th:text="${p.fechaCaducidad}">5 de enero de 2025</td>
-					<td>
-						<a class="btn btn-primary btn-sm" th:href="@{admin/formulario/{id}(id=${p.id})}" href="admin/formulario">Editar</a>
-						<a class="btn btn-danger btn-sm" th:href="@{admin/borrar/{id}(id=${p.id})}" href="#">Borrar</a>
-					</td>
+					<td class="text-end" th:text="${#numbers.formatDecimal(p.precio,1,'POINT',2,'COMMA') + ' €'}">1234,56
+						€</td>
+					<td th:text="${#temporals.format(p.fechaCaducidad)}">5 de
+						enero de 2025</td>
+					<td><a class="btn btn-primary btn-sm"
+						th:href="@{admin/formulario/{id}(id=${p.id})}"
+						href="admin/formulario">Editar</a> <a
+						class="btn btn-danger btn-sm"
+						th:href="@{admin/borrar/{id}(id=${p.id})}" href="#">Borrar</a></td>
 				</tr>
 			</tbody>
 			<tfoot class="table-dark">
@@ -34,12 +39,11 @@
 					<td></td>
 					<td></td>
 					<td></td>
-					<td>
-						<a class="btn btn-primary btn-sm" href="admin/formulario">Añadir</a>
+					<td><a class="btn btn-primary btn-sm" href="admin/formulario">Añadir</a>
 					</td>
 				</tr>
 			</tfoot>
-		</table>		
+		</table>
 	</main>
 </body>
 </html>
