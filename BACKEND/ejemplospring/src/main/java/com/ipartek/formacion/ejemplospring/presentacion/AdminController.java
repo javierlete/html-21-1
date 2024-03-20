@@ -51,4 +51,11 @@ public class AdminController {
 		
 		return "redirect:/admin";
 	}
+	
+	@GetMapping("/borrar/{id}")
+	public String borrar(@PathVariable Long id) {
+		servicio.borrarProducto(id);
+		
+		return "redirect:/admin";
+	}
 }

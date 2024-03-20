@@ -24,7 +24,7 @@
 					<td th:text="${p.fechaCaducidad}">5 de enero de 2025</td>
 					<td>
 						<a class="btn btn-primary btn-sm" th:href="@{admin/formulario/{id}(id=${p.id})}" href="admin/formulario">Editar</a>
-						<a class="btn btn-danger btn-sm" href="#">Borrar</a>
+						<a class="btn btn-danger btn-sm" th:href="@{admin/borrar/{id}(id=${p.id})}" href="#">Borrar</a>
 					</td>
 				</tr>
 			</tbody>
