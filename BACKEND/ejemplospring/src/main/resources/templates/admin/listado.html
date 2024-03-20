@@ -23,7 +23,7 @@
 					<td class="text-end" th:text="${p.precio}">1234,56 €</td>
 					<td th:text="${p.fechaCaducidad}">5 de enero de 2025</td>
 					<td>
-						<a class="btn btn-primary btn-sm" href="#">Editar</a>
+						<a class="btn btn-primary btn-sm" th:href="@{admin/formulario/{id}(id=${p.id})}" href="admin/formulario">Editar</a>
 						<a class="btn btn-danger btn-sm" href="#">Borrar</a>
 					</td>
 				</tr>
@@ -35,7 +35,7 @@
 					<td></td>
 					<td></td>
 					<td>
-						<a class="btn btn-primary btn-sm" href="#">Añadir</a>
+						<a class="btn btn-primary btn-sm" href="admin/formulario">Añadir</a>
 					</td>
 				</tr>
 			</tfoot>
