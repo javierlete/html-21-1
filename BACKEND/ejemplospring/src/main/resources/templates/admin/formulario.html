@@ -1,36 +1,55 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" th:replace="~{_global :: plantilla(~{::title}, ~{::main})}" lang="es">
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{_global :: plantilla(~{::title}, ~{::main})}" lang="es">
 <head>
 <title>Formulario</title>
 </head>
 <body>
 	<main class="container-fluid">
-		<form action="admin/formulario" method="post" th:object="${producto}">
+		<form action="admin/formulario" method="post" th:object="${producto}"
+			class="needs-validation" novalidate>
 			<div class="row mb-2">
 				<label class="col-md-2 form-label" for="id">Id</label>
 				<div class="col">
-					<input readonly class="form-control" th:classappend="${#fields.hasErrors('id') ? 'is-invalid' : ''}" th:field="*{id}">
-					<div class="invalid-feedback" th:errors="*{id}"></div>
+					<input readonly class="form-control"
+						th:classappend="${#fields.hasErrors('id') ? 'is-invalid' : ''}"
+						th:field="*{id}">
+					<div class="invalid-feedback" th:errors="*{id}">El id no es
+						válido</div>
 				</div>
 			</div>
 			<div class="row mb-2">
 				<label class="col-md-2 form-label" for="nombre">Nombre</label>
 				<div class="col">
-					<input class="form-control" th:classappend="${#fields.hasErrors('nombre') ? 'is-invalid' : ''}" th:field="*{nombre}">
+					<input required minlength="3" maxlength="50" class="form-control"
+						th:classappend="${#fields.hasErrors('nombre') ? 'is-invalid' : ''}"
+						th:field="*{nombre}">
 					<div class="invalid-feedback" th:errors="*{nombre}"></div>
+					<div class="invalid-feedback"
+						th:unless="${#fields.hasErrors('nombre')}">El nombre es
+						obligatorio y debe tener entre 3 y 50 caracteres</div>
 				</div>
 			</div>
 			<div class="row mb-2">
 				<label class="col-md-2 form-label" for="precio">Precio</label>
 				<div class="col">
-					<input type="number" step=".01" class="form-control" th:classappend="${#fields.hasErrors('precio') ? 'is-invalid' : ''}" th:field="*{precio}">
+					<input required min="0" type="number" step=".01"
+						class="form-control"
+						th:classappend="${#fields.hasErrors('precio') ? 'is-invalid' : ''}"
+						th:field="*{precio}">
 					<div class="invalid-feedback" th:errors="*{precio}"></div>
+					<div class="invalid-feedback"
+						th:unless="${#fields.hasErrors('precio')}">El precio
+						es obligatorio y debe ser positivo</div>
 				</div>
 			</div>
 			<div class="row mb-2">
-				<label class="col-md-2 form-label" for="fechaCaducidad" >Fecha de caducidad</label>
+				<label class="col-md-2 form-label" for="fechaCaducidad">Fecha
+					de caducidad</label>
 				<div class="col">
-					<input class="form-control" type="date" th:classappend="${#fields.hasErrors('fechaCaducidad') ? 'is-invalid' : ''}" th:field="*{fechaCaducidad}">
+					<input class="form-control" type="date"
+						th:classappend="${#fields.hasErrors('fechaCaducidad') ? 'is-invalid' : ''}"
+						th:field="*{fechaCaducidad}">
 					<div class="invalid-feedback" th:errors="*{fechaCaducidad}"></div>
 				</div>
 			</div>
@@ -40,6 +59,28 @@
 				</div>
 			</div>
 		</form>
+
+		<script>
+		// Example starter JavaScript for disabling form submissions if there are invalid fields
+		(() => {
+		  'use strict'
+
+		  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+		  const forms = document.querySelectorAll('.needs-validation')
+
+		  // Loop over them and prevent submission
+		  Array.from(forms).forEach(form => {
+		    form.addEventListener('submit', event => {
+		      if (!form.checkValidity()) {
+		        event.preventDefault()
+		        event.stopPropagation()
+		      }
+
+		      form.classList.add('was-validated')
+		    }, false)
+		  })
+		})()
+		</script>
 	</main>
 </body>
 </html>
