@@ -12,6 +12,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
+// https://spring.io/guides/gs/securing-web
+
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig {
@@ -25,6 +27,7 @@ public class WebSecurityConfig {
 	}
 
 	// Autenticaciones
+	// https://www.baeldung.com/spring-security-jdbc-authentication
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 		auth.jdbcAuthentication().dataSource(dataSource)
