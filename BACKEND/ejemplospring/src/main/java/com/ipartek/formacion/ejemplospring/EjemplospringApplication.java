@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.ipartek.formacion.ejemplospring.servicios.AdminService;
 
@@ -18,10 +19,17 @@ public class EjemplospringApplication implements CommandLineRunner {
 //	private ProductoRepository productoRepository;
 	
 	@Autowired
+	private PasswordEncoder passwordEncoder;
+	
+	@Autowired
 	private AdminService adminService;
 	
 	@Override
 	public void run(String... args) throws Exception {
+		System.out.printf("%s = %s\n", "contra", passwordEncoder.encode("contra"));
+		
+		System.out.println(passwordEncoder.matches("contra", "$2a$10$VNKAWLCFmc7I7Bvmj30QVeLjsds9sP.jQ85eh5AQBSemKS/qRIL2i"));
+		
 //		adminService.agregarProducto(Producto.builder().nombre("Producto4").precio(new BigDecimal("4234.5")).build());
 //		adminService.agregarProducto(Producto.builder().nombre("Producto5").precio(new BigDecimal("5234.5")).build());
 		
