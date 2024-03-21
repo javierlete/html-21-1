@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{_global :: plantilla(~{::title}, ~{::main})}" lang="es">
+<head>
+<title>TÍTULO</title>
+</head>
+<body>
+	<main class="container-fluid">
+		<form th:action="@{/login}" method="post">
+			<div class="row mb-2">
+				<label class="col-md-2 form-label" for="nombre">Usuario</label>
+				<div class="col">
+					<input type="text" class="form-control" name="username">
+				</div>
+			</div>
+			<div class="row mb-2">
+				<label class="col-md-2 form-label" for="precio">Contraseña</label>
+				<div class="col">
+					<input type="password" class="form-control" name="password">
+				</div>
+			</div>
+			<div class="row mb-2">
+				<div class="offset-md-2 col">
+					<button class="btn btn-primary">Iniciar sesión</button>
+					<span class="text-danger" th:if="${param.error}">Usuario o contraseña incorrectos</span>
+					<span class="text-danger" th:if="${param.logout}">Has cerrado la sesión</span>
+				</div>
+			</div>
+		</form>
+	</main>
+</body>
+</html>

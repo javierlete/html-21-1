@@ -32,4 +32,9 @@ public class IndexController {
 		
 		return "carrito";
 	}
+	
+	@GetMapping("/login")
+	public String login() {
+		return "login";
+	}
 }
