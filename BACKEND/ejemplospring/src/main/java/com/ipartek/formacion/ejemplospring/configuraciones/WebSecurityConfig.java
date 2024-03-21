@@ -23,11 +23,14 @@ public class WebSecurityConfig {
 	PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder(); // NoOpPasswordEncoder.getInstance();
 	}
-	
+
 	// Autenticaciones
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-		auth.jdbcAuthentication().dataSource(dataSource);
+		auth.jdbcAuthentication().dataSource(dataSource)
+				.usersByUsernameQuery("select email,password,1 from usuarios where email = ?")
+				.authoritiesByUsernameQuery("SELECT u.email, CONCAT('ROLE_', r.nombre) from usuarios u join roles r on u.rol_id = r.id where email = ?");
+		;
 	}
 
 	// Autorizaciones
@@ -42,16 +45,11 @@ public class WebSecurityConfig {
 }
 
 /*
-create table users(
-username varchar(50) not null primary key,
-password varchar(500) not null,
-enabled boolean not null
-);
-
-create table authorities (
-username varchar(50) not null,
-authority varchar(50) not null,
-constraint fk_authorities_users foreign key(username) references users(username)
-);
-create unique index ix_auth_username on authorities (username,authority);
-*/
+ * create table users( username varchar(50) not null primary key, password
+ * varchar(500) not null, enabled boolean not null );
+ * 
+ * create table authorities ( username varchar(50) not null, authority
+ * varchar(50) not null, constraint fk_authorities_users foreign key(username)
+ * references users(username) ); create unique index ix_auth_username on
+ * authorities (username,authority);
+ */
