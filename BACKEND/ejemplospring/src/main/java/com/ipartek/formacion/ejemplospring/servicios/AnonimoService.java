@@ -9,6 +9,8 @@ public interface AnonimoService {
 	Iterable<Producto> listarProductos();
 	Producto verDetalleProducto(Long id);
 	
-	Iterable<Producto> listarProductosCarrito();
+	Iterable<Producto> listarProductosCarrito();	
+	void agregarProductoACarrito(Long idProducto);
 	void agregarProductoACarrito(Producto producto);
+	void quitarProductoDeCarrito(Long id);
 }

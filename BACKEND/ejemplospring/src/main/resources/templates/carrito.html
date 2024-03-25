@@ -1,11 +1,42 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" th:replace="~{_global :: plantilla(~{::title}, ~{::main})}" lang="es">
 <head>
-<title>TÍTULO</title>
+<title>Carrito</title>
 </head>
 <body>
-	<main class="container-fluid">
-		<h1 class="display-1" th:text="${producto}">CONTENIDO</h1>
+	<main class="container">
+		<table class="table">
+			<caption>Carrito</caption>
+			<thead>
+				<tr>
+					<th>Nombre</th>
+					<th class="text-end">Precio</th>
+					<th>Fecha de caducidad</th>
+					<th>OPCIONES</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="p: ${carrito.productos}">
+					<td th:text="${p.nombre}">PRODUCTO DEMO</td>
+					<td class="text-end" th:text="${#numbers.formatDecimal(p.precio,1,'POINT',2,'COMMA') + ' €'}">1234,56
+						€</td>
+					<td th:text="${#temporals.format(p.fechaCaducidad)}">5 de
+						enero de 2025</td>
+					<td><a
+						class="btn btn-danger btn-sm"
+						th:href="@{carrito/borrar/{id}(id=${p.id})}" href="#">Borrar</a></td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td><a class="btn btn-primary btn-sm" href="/">Añadir</a>
+					</td>
+				</tr>
+			</tfoot>
+		</table>
 	</main>
 </body>
 </html>

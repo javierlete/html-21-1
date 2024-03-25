@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.ipartek.formacion.ejemplospring.servicios.AnonimoService;
@@ -11,7 +12,6 @@ import com.ipartek.formacion.ejemplospring.servicios.AnonimoService;
 @Controller
 @RequestMapping("/")
 public class IndexController {
-	
 	@Autowired
 	private AnonimoService anonimoService;
 	
@@ -25,12 +25,19 @@ public class IndexController {
 	}
 	
 	@GetMapping("/carrito")
-	public String carrito(Long id, Model modelo) {
-		var producto = anonimoService.verDetalleProducto(id);
-		
-		modelo.addAttribute("producto", producto);
+	public String carrito(Long id) {
+		if(id != null) {
+			anonimoService.agregarProductoACarrito(id);
+		}
 		
 		return "carrito";
+	}
+	
+	@GetMapping("/carrito/borrar/{id}")
+	public String carritoBorrar(@PathVariable Long id) {
+		anonimoService.quitarProductoDeCarrito(id);
+		
+		return "redirect:/carrito";
 	}
 	
 	@GetMapping("/login")

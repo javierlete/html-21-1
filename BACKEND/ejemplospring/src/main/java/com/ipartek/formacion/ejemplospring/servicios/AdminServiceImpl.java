@@ -10,7 +10,7 @@ import lombok.extern.java.Log;
 
 @Log
 @Service
-public class AdminServiceImpl extends AnonimoServiceImpl implements AdminService {
+public class AdminServiceImpl implements AdminService {
 
 	@Autowired
 	private ProductoRepository productoRepository;
@@ -18,13 +18,13 @@ public class AdminServiceImpl extends AnonimoServiceImpl implements AdminService
 	@Override
 	public Iterable<Producto> listarProductos() {
 		log.info("Se van a listar los productos");
-		return super.listarProductos();
+		return productoRepository.findAll();
 	}
 
 	@Override
 	public Producto verDetalleProducto(Long id) {
 		log.info("Se va a pedir el producto " + id);
-		return super.verDetalleProducto(id);
+		return productoRepository.findById(id).orElse(null);
 	}
 
 	@Override

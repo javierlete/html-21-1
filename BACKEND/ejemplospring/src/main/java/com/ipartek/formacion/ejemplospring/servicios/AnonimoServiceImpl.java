@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
+import com.ipartek.formacion.ejemplospring.entidades.Carrito;
 import com.ipartek.formacion.ejemplospring.entidades.Producto;
 import com.ipartek.formacion.ejemplospring.entidades.Usuario;
 import com.ipartek.formacion.ejemplospring.repositorios.ProductoRepository;
@@ -12,7 +13,9 @@ import com.ipartek.formacion.ejemplospring.repositorios.UsuarioRepository;
 @Service
 @Primary
 public class AnonimoServiceImpl implements AnonimoService {
-
+	@Autowired
+	private Carrito carrito;
+	
 	@Autowired
 	private UsuarioRepository usuarioRepository;
 
@@ -42,12 +45,23 @@ public class AnonimoServiceImpl implements AnonimoService {
 
 	@Override
 	public Iterable<Producto> listarProductosCarrito() {
-		throw new ServicioException("NO IMPLEMENTADO");
+		return carrito.getProductos();
 	}
 
 	@Override
 	public void agregarProductoACarrito(Producto producto) {
-		throw new ServicioException("NO IMPLEMENTADO");
+		carrito.getProductos().add(producto);
+	}
+
+	@Override
+	public void agregarProductoACarrito(Long idProducto) {
+		var producto = verDetalleProducto(idProducto);
+		agregarProductoACarrito(producto);
+	}
+
+	@Override
+	public void quitarProductoDeCarrito(Long id) {
+		carrito.getProductos().removeIf(p -> p.getId().equals(id));
 	}
 
 }
