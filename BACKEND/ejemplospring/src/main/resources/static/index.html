@@ -1,13 +1,10 @@
 <!DOCTYPE html>
-<html th:fragment="plantilla (titulo, contenido)"
-	xmlns:th="http://www.thymeleaf.org"
-	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
-	lang="es">
+<html lang="es">
 <head>
 <meta charset="UTF-8">
-<title th:replace="${titulo}">TÍTULO POR DEFECTO</title>
+<title>Ejemplo Cliente REST</title>
 
-<base th:href="@{/}">
+<base href="/">
 
 <link href="imgs/icono.svg" rel="icon">
 
@@ -21,7 +18,7 @@
 <body>
 	<nav class="navbar navbar-expand-sm bg-dark mb-3" data-bs-theme="dark">
 		<div class="container-fluid">
-			<a class="navbar-brand" th:href="@{/}" href="index">Tienda</a>
+			<a class="navbar-brand" href="index">Tienda REST</a>
 			<button class="navbar-toggler" type="button"
 				data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
 				aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -30,19 +27,17 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav me-auto mb-2 mb-sm-0">
-					<li class="nav-item"><a class="nav-link" th:href="@{/}"
-						href="">Principal</a></li>
+					<li class="nav-item"><a class="nav-link"
+						href="javascript:index()">Principal</a></li>
 				</ul>
 				<ul class="navbar-nav mb-2 mb-sm-0">
-					<li class="nav-item" sec:authorize="hasRole('ROLE_ADMIN')"><a
-						class="nav-link" href="admin">Productos</a></li>
+					<li class="nav-item"><a class="nav-link"
+						href="javascript:productos()">Productos</a></li>
 					<li class="nav-item"><a class="nav-link" href="carrito">Carrito</a></li>
-					<li class="navbar-text" sec:authorize="isAuthenticated()"
-						sec:authentication="name">${sessionScope.usuario.nombre}</li>
-					<li class="nav-item" sec:authorize="!isAuthenticated()"><a
-						class="nav-link" href="login">Iniciar sesión</a></li>
-					<li class="nav-item" sec:authorize="isAuthenticated()"><form
-							th:action="@{/logout}" method="post">
+					<li class="navbar-text">USUARIO</li>
+					<li class="nav-item"><a class="nav-link" href="login">Iniciar
+							sesión</a></li>
+					<li class="nav-item"><form>
 							<button class="nav-link">Cerrar sesión</button>
 						</form></li>
 
@@ -51,11 +46,89 @@
 		</div>
 	</nav>
 
-	<main class="container-fluid" th:replace="${contenido}">
-	
-		<ul>
-			
-		</ul>
+	<main class="container-fluid">
+		<section id="index">
+			<h2>Listado de productos</h2>
+			<div
+				class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 row-cols-xxl-6 g-4">
+
+			</div>
+		</section>
+
+		<section id="productos">
+			<h2>Mantenimiento de productos</h2>
+
+			<table class="table table-bordered table-hover table-striped">
+				<caption>Listado de productos</caption>
+				<thead class="table-dark">
+					<tr>
+						<th class="text-end">Id</th>
+						<th>Nombre</th>
+						<th class="text-end">Precio</th>
+						<th>Fecha de caducidad</th>
+						<th>OPCIONES</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+
+					</tr>
+				</tbody>
+				<tfoot class="table-dark">
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td><a class="btn btn-primary btn-sm"
+							href="javascript:formulario()">Añadir</a></td>
+					</tr>
+				</tfoot>
+			</table>
+		</section>
+
+		<section id="formulario">
+			<form action="javascript:guardar()" novalidate>
+				<div class="row mb-2">
+					<label class="col-md-2 form-label" for="id">Id</label>
+					<div class="col">
+						<input readonly class="form-control" id="id">
+						<div class="invalid-feedback">El id no es válido</div>
+					</div>
+				</div>
+				<div class="row mb-2">
+					<label class="col-md-2 form-label" for="nombre">Nombre</label>
+					<div class="col">
+						<input required minlength="3" maxlength="50" class="form-control"
+							id="nombre">
+						<div class="invalid-feedback">El nombre es obligatorio y
+							debe tener entre 3 y 50 caracteres</div>
+					</div>
+				</div>
+				<div class="row mb-2">
+					<label class="col-md-2 form-label" for="precio">Precio</label>
+					<div class="col">
+						<input required min="0" type="number" step=".01"
+							class="form-control" id="precio">
+						<div class="invalid-feedback">El precio es obligatorio y
+							debe ser positivo</div>
+					</div>
+				</div>
+				<div class="row mb-2">
+					<label class="col-md-2 form-label" for="fechaCaducidad">Fecha
+						de caducidad</label>
+					<div class="col">
+						<input class="form-control" type="date" id="fechaCaducidad">
+						<div class="invalid-feedback"></div>
+					</div>
+				</div>
+				<div class="row mb-2">
+					<div class="offset-md-2 col">
+						<button class="btn btn-primary">Guardar</button>
+					</div>
+				</div>
+			</form>
+		</section>
 	</main>
 
 	<footer class="text-bg-dark p-2 mt-3">
