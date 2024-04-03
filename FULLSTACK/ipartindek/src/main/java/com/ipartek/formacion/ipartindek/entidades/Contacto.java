@@ -59,7 +59,7 @@ public class Contacto {
 	
 	@Lob
 	@Size(max = 5000)
-	private String descripción;
+	private String descripcion;
 	
 	@ManyToMany
 	private Set<Contacto> leGusta;

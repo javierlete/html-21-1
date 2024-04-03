@@ -31,5 +31,5 @@ public class Genero {
 	private String nombre;
 
 	@Size(max = 2000)
-	private String descripción;
+	private String descripcion;
 }
