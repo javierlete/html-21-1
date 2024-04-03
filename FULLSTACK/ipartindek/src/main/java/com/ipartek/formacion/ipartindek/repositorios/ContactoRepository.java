@@ -7,5 +7,5 @@ import com.ipartek.formacion.ipartindek.entidades.Contacto;
 
 @RepositoryRestResource(collectionResourceRel = "contactos", path = "contactos")
 public interface ContactoRepository extends JpaRepository<Contacto, Long> {
-
+	Contacto findByEmail(String email);
 }

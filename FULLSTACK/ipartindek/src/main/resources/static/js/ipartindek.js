@@ -16,26 +16,38 @@ window.addEventListener('DOMContentLoaded', function () {
 
     const loginForm = document.querySelector('form:first-of-type');
     const registroForm = document.querySelector('form:last-of-type');
+    
+    const menuLogin = document.querySelector('#menu-login');
+    const menuLogout = document.querySelector('#menu-logout');
+    const menuUsuario = document.querySelector('#menu-usuario');
 
     const cards = document.querySelector('#listado>div');
 
-    loginForm.addEventListener('submit', function (e) {
+	menuLogout.style.display = 'none';
+
+    loginForm.addEventListener('submit', async function (e) {
         e.preventDefault();
 
         const usuario = { email: loginForm.emailLogin.value, password: loginForm.passwordLogin.value };
         
         console.log(usuario);
-            
-        const filtro = contactos.filter(c => c.email === usuario.email && c.password === usuario.password);
-
-        console.log(filtro);
-
-        const loginOk = filtro.length;
-
-        console.log(loginOk);
         
-        if(loginOk) {
-            usuarioLogin = filtro[0];
+        const respuesta = await fetch(`${URL_CONTACTOS}/search/findByEmail?email=${usuario.email}`);
+        
+        let contacto = null;
+        
+        if(respuesta.status !== 404) {
+        	contacto = await respuesta.json();            
+		}
+        
+        if(contacto && contacto.password === usuario.password) {
+            usuarioLogin = contacto;
+            
+            menuUsuario.innerText = usuarioLogin.nombre;
+            
+            menuLogout.style.display = null;
+            menuLogin.style.display = 'none';
+            
             listado();
         } else {
             alert('El usuario o la contraseña son incorrectos');
