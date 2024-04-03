@@ -31,7 +31,7 @@ import lombok.NoArgsConstructor;
 public class Contacto {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Long Id;
 	
 	@Email
 	@NotNull
