@@ -82,9 +82,8 @@ window.addEventListener('DOMContentLoaded', function () {
     }
 
     async function listado() {
-        const respuesta = await fetch(URL_CONTACTOS);
-        const objeto = await respuesta.json();
-        const contactos = objeto._embedded.contactos;
+        const respuesta = await fetch(`${URL_CONTACTOS}/search/congenero`);
+        const contactos = await respuesta.json();
 
         cards.innerHTML = '';
 
@@ -102,7 +101,7 @@ window.addEventListener('DOMContentLoaded', function () {
                                 <div class="card-body">
                                     <h5 class="card-title">${c.nombre}</h5>
                                     <ul class="list-group list-group-flush">
-                                        <li class="list-group-item">${c.genero}</li>
+                                        <li class="list-group-item">${c.genero.nombre}</li>
                                     </ul>
                                     <p class="card-text">${c.descripcion}</p>
                                     <p class="card-text"><small class="text-body-secondary">${c.fechaNacimiento}</small>
