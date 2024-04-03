@@ -1,5 +1,8 @@
 'use strict';
 
+const URL_CONTACTOS = 'http://localhost:8080/api/contactos';
+const URL_GENEROS = 'http://localhost:8080/api/generos';
+
 const contactos = [
     { id: 1, email: 'javier@email.net', password: 'javier', nombre: 'Javier Lete', genero: 'Hombre', fechaNacimiento: '2000-01-02', descripcion: 'Yo soy muy guay' },
     { id: 2, email: 'pepe@email.net', password: 'pepe', nombre: 'Pepe Pérez', genero: 'Hombre', fechaNacimiento: '2002-03-04', descripcion: 'Yo soy muy guay' },
@@ -66,7 +69,11 @@ window.addEventListener('DOMContentLoaded', function () {
         document.querySelector('#' + id).style.display = 'block';
     }
 
-    function listado() {
+    async function listado() {
+        const respuesta = await fetch(URL_CONTACTOS);
+        const objeto = await respuesta.json();
+        const contactos = objeto._embedded.contactos;
+
         cards.innerHTML = '';
 
         contactos.forEach(c => {
