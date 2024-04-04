@@ -28,6 +28,10 @@ window.addEventListener('DOMContentLoaded', function() {
 	loginForm.addEventListener('submit', hacerLogin);
 
 	registroForm.addEventListener('submit', hacerRegistro);
+	
+	menuLogin.addEventListener('click', () => mostrar('login'));
+	
+	menuLogout.addEventListener('click', logout);
 
 	mostrar('login');
 
@@ -116,6 +120,8 @@ window.addEventListener('DOMContentLoaded', function() {
 			menuLogout.style.display = null;
 			menuLogin.style.display = 'none';
 
+			loginForm.reset();
+
 			listado();
 		} else {
 			alert('El usuario o la contraseña son incorrectos');
@@ -137,6 +143,17 @@ window.addEventListener('DOMContentLoaded', function() {
 
 		usuarioLogin = usuario;
 
+		registroForm.reset();
+
 		listado();
+	}
+	
+	function logout() { 
+		usuarioLogin = undefined;
+
+		mostrar('login');
+		menuUsuario.innerText = '';
+		menuLogout.style.display = 'none';
+		menuLogin.style.display = null;
 	}
 });
