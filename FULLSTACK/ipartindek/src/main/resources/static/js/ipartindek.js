@@ -3,12 +3,6 @@
 const URL_CONTACTOS = 'http://localhost:8080/api/contactos';
 const URL_GENEROS = 'http://localhost:8080/api/generos';
 
-const contactos = [
-	{ id: 1, email: 'javier@email.net', password: 'javier', nombre: 'Javier Lete', genero: 'Hombre', fechaNacimiento: '2000-01-02', descripcion: 'Yo soy muy guay' },
-	{ id: 2, email: 'pepe@email.net', password: 'pepe', nombre: 'Pepe Pérez', genero: 'Hombre', fechaNacimiento: '2002-03-04', descripcion: 'Yo soy muy guay' },
-	{ id: 3, email: 'ines@email.net', password: 'ines', nombre: 'Inés González', genero: 'Mujer', fechaNacimiento: '2005-06-07', descripcion: 'Yo soy muy guay' },
-];
-
 let usuarioLogin;
 
 window.addEventListener('DOMContentLoaded', function() {
@@ -19,6 +13,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
 	const menuLogin = document.querySelector('#menu-login');
 	const menuLogout = document.querySelector('#menu-logout');
+	const menuRegistro = document.querySelector('#menu-registro');
 	const menuUsuario = document.querySelector('#menu-usuario');
 
 	const cards = document.querySelector('#listado>div');
@@ -28,10 +23,10 @@ window.addEventListener('DOMContentLoaded', function() {
 	loginForm.addEventListener('submit', hacerLogin);
 
 	registroForm.addEventListener('submit', hacerRegistro);
-	
+
 	menuLogin.addEventListener('click', () => mostrar('login'));
-	
 	menuLogout.addEventListener('click', logout);
+	menuRegistro.addEventListener('click', () => mostrar('login'));
 
 	mostrar('login');
 
@@ -113,47 +108,58 @@ window.addEventListener('DOMContentLoaded', function() {
 		}
 
 		if (contacto && contacto.password === usuario.password) {
-			usuarioLogin = contacto;
-
-			menuUsuario.innerText = usuarioLogin.nombre;
-
-			menuLogout.style.display = null;
-			menuLogin.style.display = 'none';
-
-			loginForm.reset();
-
-			listado();
+			login(contacto);
 		} else {
 			alert('El usuario o la contraseña son incorrectos');
 		}
 	}
 
-	function hacerRegistro(e) {
+	async function hacerRegistro(e) {
 		e.preventDefault();
 
-		const usuario = { email: registroForm.email.value, password: registroForm.password.value, genero: registroForm.genero.value, nombre: registroForm.nombre.value, telefono: registroForm.telefono.value, fechaNacimiento: registroForm.fechaNacimiento.value, descripcion: registroForm.descripcion.value };
-
-		const id = Math.max(...contactos.map(c => c.id)) + 1;
-
-		usuario.id = id;
+		const usuario = { 
+			email: registroForm.email.value, 
+			password: registroForm.password.value, 
+			nombre: registroForm.nombre.value, 
+			telefono: registroForm.telefono.value, 
+			fechaNacimiento: registroForm.fechaNacimiento.value, 
+			descripcion: registroForm.descripcion.value, 
+			genero: `${URL_GENEROS}/${+registroForm.genero.value}`, 
+		};
 
 		console.log(usuario);
 
-		contactos.push(usuario);
+		const respuesta = await fetch(URL_CONTACTOS, { 
+			method: 'POST', 
+			headers: { 'Content-type': 'application/json' }, 
+			body: JSON.stringify(usuario) 
+		});
 
-		usuarioLogin = usuario;
+		login(await respuesta.json());
+	}
 
+	function login(contacto) {
+		usuarioLogin = contacto;
+
+		menuUsuario.innerText = usuarioLogin.nombre;
+
+		menuLogout.style.display = null;
+		menuLogin.style.display = 'none';
+
+		loginForm.reset();
 		registroForm.reset();
 
 		listado();
 	}
 	
-	function logout() { 
+	function logout() {
 		usuarioLogin = undefined;
-
-		mostrar('login');
+		
 		menuUsuario.innerText = '';
+		
 		menuLogout.style.display = 'none';
 		menuLogin.style.display = null;
+		
+		mostrar('login');
 	}
 });
