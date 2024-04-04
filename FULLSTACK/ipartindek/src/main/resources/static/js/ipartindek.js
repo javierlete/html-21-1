@@ -28,8 +28,8 @@ window.addEventListener('DOMContentLoaded', function() {
 	menuLogout.addEventListener('click', logout);
 	menuRegistro.addEventListener('click', () => mostrar('login'));
 
-	listado();
-	//mostrar('login');
+	//listado();
+	mostrar('login');
 
 	// FUNCIONES
 	function mostrar(id) {
@@ -45,6 +45,15 @@ window.addEventListener('DOMContentLoaded', function() {
 		cards.innerHTML = '';
 
 		contactos.forEach(c => tarjetaContacto(c));
+
+		const respuestaMeGusta = await fetch(`${URL_CONTACTOS}/search/listadoCompleto?id=${usuarioLogin.id}`)
+		const resultado = await respuestaMeGusta.json();
+		const contactosMeGusta = resultado._embedded.contactos;
+		
+		contactosMeGusta.map(c => c.id).forEach(id => {
+			const input = document.querySelector('#megusta-' + id);
+			input.checked = true;
+		});
 
 		mostrar('listado');
 	}
@@ -142,22 +151,22 @@ window.addEventListener('DOMContentLoaded', function() {
 	                            <div>
 	                                <div class="form-check">
 	                                    <input class="form-check-input" type="checkbox" value=""
-	                                        id="flexCheckDefault" onchange="meGusta(${c.id}, this)">
-	                                    <label class="form-check-label" for="flexCheckDefault">
+	                                        id="megusta-${c.id}" onchange="meGusta(${c.id}, this)">
+	                                    <label class="form-check-label" for="megusta-${c.id}">
 	                                        Me gusta
 	                                    </label>
 	                                </div>
 	                                <div class="form-check">
 	                                    <input class="form-check-input" type="checkbox" value=""
-	                                        id="flexCheckDefault">
-	                                    <label class="form-check-label" for="flexCheckDefault">
+	                                        id="match-${c.id}">
+	                                    <label class="form-check-label" for="match-${c.id}">
 	                                        Pedir match
 	                                    </label>
 	                                </div>
 	                                <div class="form-check">
 	                                    <input class="form-check-input" type="checkbox" value=""
-	                                        id="flexCheckDefault">
-	                                    <label class="form-check-label" for="flexCheckDefault">
+	                                        id="confirmar-${c.id}">
+	                                    <label class="form-check-label" for="confirmar-${c.id}">
 	                                        Confirmar
 	                                    </label>
 	                                </div>
